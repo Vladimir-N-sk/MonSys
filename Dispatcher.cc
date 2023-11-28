@@ -21,16 +21,16 @@
     #include "SocketServerNetwork.h"
 #endif
 
-#ifdef EXPRESSION
+#ifdef EXPRESSIONS
     #include "Expression.h"
     #include "Parser.h"    
 #endif
-
 
 #include "RndSensor.h"
 #include "PseudoNetwork.h"
 #include "S2SMapRobot.h"
 #include "LogBackend.h"
+#include "AlarmBoolRobot.h"
 
 #include "Dispatcher.h"
 
@@ -205,6 +205,23 @@ void fillParameters( Parameter* s, const Config::Properties& p)
     }
     catch (Config::NoSuchProp& e) {
     }
+
+#ifdef EXPRESSIONS
+    try {
+        const string dts = p["donttrust"];
+        prop->dontTrustExpr = Expression<bool>::make( s, dts);
+    }
+    catch (Config::NoSuchProp& e) {        
+    }
+
+    try {
+        const string trans_string = p["convert"];
+        prop->transformExpr = Expression<double>::make( s, trans_string);
+    }
+    catch (Config::NoSuchProp& e) {
+    }
+#endif //EXPRESSIONS
+
 }
 
 Runable* Dispatcher::makeSensor( const string& name)
@@ -213,7 +230,7 @@ Runable* Dispatcher::makeSensor( const string& name)
     const Config& c = config;
     string type = c[name][TYPE];
 
-string addr;
+string addr= "";
 
 //    string addr = c[name]["addr"];
 //    if ( addr.size() > 0 ) addr = trim(addr);
@@ -223,7 +240,6 @@ string addr;
         addr = trim(c[name]["addr"]);
     }
     catch (Config::NoSuchProp& e) {
-        addr = "";
     }
 
 
@@ -260,13 +276,13 @@ Robot* Dispatcher::makeRobot( const string& name)
 
 
 //    string addr="";
-    string addr;
+    string addr="";
     
     try {
         addr = trim(c[name]["addr"]);
     }
     catch (Config::NoSuchProp& e) {
-        addr = "";
+//        addr = "";
     }
 
     if ( NULL == s && type == "Timeticks2TimeStringRobot") {
@@ -282,7 +298,11 @@ Robot* Dispatcher::makeRobot( const string& name)
             m[arg]=val;
         s = new S2SMapRobot( name, addr, net, m);
     }
-
+#ifdef EXPRESSIONS
+    if ( NULL == s && type == "ArithmeticRobot") {
+        s = new ArithmeticRobot( name, addr, net, c[name]["expr"]);
+    }
+#endif
 
     if ( NULL == s)
         throw runtime_error( "Wrong robot type: " + type);

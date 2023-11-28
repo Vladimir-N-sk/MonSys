@@ -42,18 +42,14 @@ int main(int argc, char **argv)
         initRND();
 
         startup( argc, argv);
-//        if ( test ) exit (0);
 
         Config* c = new Config( *cfile);
-//        if ( test ) exit (0);
-        
 
     	Dispatcher* disp = new Dispatcher(*c);
     	disp->doConfig();
 
 	delete disp;
 	delete c;
-/**/
 
         procSignals();
         MOND_DEBUG << "shutdown" << endl;
@@ -109,12 +105,10 @@ void procSignals()
         case SIGTERM:
         case SIGINT:
             MOND_DEBUG << "recieved signal: " << sig << endl;
-//            ~PGBackend();
             timetoexit = true;
             break;
 
         case SIGCHLD:
-//            MOND_DEBUG << "recieved SIGCHLD: " << sig << endl;
 
     while ( (pid_sig = waitpid(-1, &stat, WNOHANG)) > 0)
         MOND_DEBUG << " Signal SIGCHLD, Child " << pid_sig <<  " terminated"<<endl;
@@ -145,7 +139,7 @@ void setuid( const string& uname)
 
 void printHelp()
 {
-    cout << "Mon[itoring] Sys[tem], ver 6.0, www.monsys.ru" << endl;
+    cout << "Mon[itoring] Sys[tem], ver 1.0, github.com/Vladimir-N-sk/MonSys" << endl;
     cout << "usage: monsys [-c <file>] [-d] [-l] [-u <user>]" << endl;
     cout << "-c <file>: use config <file>" << endl;
    cout << "-t: test config <file>" << endl;
@@ -159,7 +153,7 @@ void printHelp()
 
 string printVersion()
 {
-    return "Mon[itoring] Sys[tem], ver 6.0, www.monsys.ru ";
+    return "Mon[itoring] Sys[tem], ver 1.0, github.com/Vladimir-N-sk/MonSys";
 }
 
 void startup( int argc, char** argv)
@@ -198,7 +192,7 @@ void startup( int argc, char** argv)
             break;
         default:
             printHelp();
-            exit(-1);
+            exit (0);
         }
     }
 

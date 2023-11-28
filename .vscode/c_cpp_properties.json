@@ -1,0 +1,22 @@
+{
+    "configurations": [
+        {
+            "name": "Linux",
+            "includePath": [
+                "${workspaceFolder}/**",
+                "/usr/local/include/**"
+            ],
+            "defines": [],
+            "compilerPath": "/usr/bin/gcc",
+            "cStandard": "c99",
+            "intelliSenseMode": "${default}",
+            "compilerArgs": [
+                "-g",
+                "-lpthread ",
+                "-Wno-deprecated"
+            ],
+            "cppStandard": "c++11"
+        }
+    ],
+    "version": 4
+}

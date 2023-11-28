@@ -26,9 +26,6 @@ public:
     void dropSensor( const string&);
     Runable* makeNetwork( const string&) throw ( string, runtime_error);
 
-// AVN for test    
-//    Runable* makeNetwork() throw ( string, runtime_error);    
-
     void dropNetwork( const string&);
     Runable* makeBackend( const string&) throw ( string, exception);
     void dropBackend( const string&);

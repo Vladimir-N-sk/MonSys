@@ -55,7 +55,6 @@ string Config::Properties::findRecursively( const string& pname,
 string Config::Properties::operator[]( const string& pname)
                                const throw (Config::NoSuchProp, runtime_error)
 {
-//MOND_DEBUG << "!2 Call string Config::Properties::operator[]" <<endl;
     set< string> sawList;
     return findRecursively( pname, sawList);
 }

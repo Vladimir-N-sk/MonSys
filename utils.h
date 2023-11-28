@@ -19,6 +19,8 @@
 #include <string.h>
 #include <math.h>
 
+using namespace std;
+
 void initRND();
 void procSignals();
 void blockSignals();
@@ -32,9 +34,9 @@ template <typename T>
 T dec2( const std::string& s)
 {
     T val;
-    stringstream tmp( s);
+    std::stringstream tmp( s);
     if ( !( tmp >> val) || !tmp.eof())
-        throw runtime_error("bad number: " + s);
+        throw std::runtime_error("bad number: " + s);
     return val;
 }
 

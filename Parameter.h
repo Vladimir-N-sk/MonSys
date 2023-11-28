@@ -15,7 +15,7 @@ const unsigned char WEDGED = 1;
 class Message;
 class Network;
 
-#ifdef EXPRESSIONS
+//#ifdef EXPRESSIONS
 template <typename A>
 class Expression;
 
@@ -30,7 +30,7 @@ private:
     alarms_type alarms;
 
 };
-#endif //EXPRESSIONS
+//#endif //EXPRESSIONS
 
 class Parameter {
 

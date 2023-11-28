@@ -107,13 +107,3 @@ string Message::Body<const char *>::toString()
 {
     return value;
 }
-
-/*  AVN to *.h
-Message::BodyBase::~BodyBase()
-{
-}
-
-Message::Body<char*>::~Body()
-{
-}
-*/
