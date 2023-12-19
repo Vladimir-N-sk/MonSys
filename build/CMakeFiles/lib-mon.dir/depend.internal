@@ -46,6 +46,7 @@ CMakeFiles/lib-mon.dir/Dispatcher.cc.o
  /home/monsys/MonSys/MessageQueue.h
  /home/monsys/MonSys/Message_Body.h
  /home/monsys/MonSys/Network.h
+ /home/monsys/MonSys/PGBackend.h
  /home/monsys/MonSys/Parameter.h
  /home/monsys/MonSys/Parser.h
  /home/monsys/MonSys/PseudoNetwork.h
@@ -55,6 +56,8 @@ CMakeFiles/lib-mon.dir/Dispatcher.cc.o
  /home/monsys/MonSys/Robot.h
  /home/monsys/MonSys/Runable.h
  /home/monsys/MonSys/S2SMapRobot.h
+ /home/monsys/MonSys/SNMPNetwork.h
+ /home/monsys/MonSys/SNMPSensor.h
  /home/monsys/MonSys/Sensor.h
  /home/monsys/MonSys/SocketNetwork.h
  /home/monsys/MonSys/Time.h
@@ -62,6 +65,78 @@ CMakeFiles/lib-mon.dir/Dispatcher.cc.o
  /home/monsys/MonSys/common.h
  /home/monsys/MonSys/globals.h
  /home/monsys/MonSys/utils.h
+ /usr/include/postgresql/libpq-fe.h
+ /usr/include/postgresql/pg_config_ext.h
+ /usr/include/postgresql/postgres_ext.h
+ /usr/local/include/net-snmp/config_api.h
+ /usr/local/include/net-snmp/definitions.h
+ /usr/local/include/net-snmp/library/asn1.h
+ /usr/local/include/net-snmp/library/callback.h
+ /usr/local/include/net-snmp/library/check_varbind.h
+ /usr/local/include/net-snmp/library/container.h
+ /usr/local/include/net-snmp/library/container_binary_array.h
+ /usr/local/include/net-snmp/library/container_iterator.h
+ /usr/local/include/net-snmp/library/container_list_ssll.h
+ /usr/local/include/net-snmp/library/data_list.h
+ /usr/local/include/net-snmp/library/default_store.h
+ /usr/local/include/net-snmp/library/getopt.h
+ /usr/local/include/net-snmp/library/int64.h
+ /usr/local/include/net-snmp/library/keytools.h
+ /usr/local/include/net-snmp/library/lcd_time.h
+ /usr/local/include/net-snmp/library/md5.h
+ /usr/local/include/net-snmp/library/mib.h
+ /usr/local/include/net-snmp/library/mt_support.h
+ /usr/local/include/net-snmp/library/netsnmp-attribute-format.h
+ /usr/local/include/net-snmp/library/oid.h
+ /usr/local/include/net-snmp/library/oid_stash.h
+ /usr/local/include/net-snmp/library/parse.h
+ /usr/local/include/net-snmp/library/read_config.h
+ /usr/local/include/net-snmp/library/scapi.h
+ /usr/local/include/net-snmp/library/snmp-tc.h
+ /usr/local/include/net-snmp/library/snmp.h
+ /usr/local/include/net-snmp/library/snmpCallbackDomain.h
+ /usr/local/include/net-snmp/library/snmpIPv4BaseDomain.h
+ /usr/local/include/net-snmp/library/snmpIPv6BaseDomain.h
+ /usr/local/include/net-snmp/library/snmpTCPDomain.h
+ /usr/local/include/net-snmp/library/snmpTCPIPv6Domain.h
+ /usr/local/include/net-snmp/library/snmpUDPBaseDomain.h
+ /usr/local/include/net-snmp/library/snmpUDPDomain.h
+ /usr/local/include/net-snmp/library/snmpUDPIPv4BaseDomain.h
+ /usr/local/include/net-snmp/library/snmpUDPIPv6Domain.h
+ /usr/local/include/net-snmp/library/snmpUnixDomain.h
+ /usr/local/include/net-snmp/library/snmp_alarm.h
+ /usr/local/include/net-snmp/library/snmp_api.h
+ /usr/local/include/net-snmp/library/snmp_assert.h
+ /usr/local/include/net-snmp/library/snmp_client.h
+ /usr/local/include/net-snmp/library/snmp_debug.h
+ /usr/local/include/net-snmp/library/snmp_enum.h
+ /usr/local/include/net-snmp/library/snmp_impl.h
+ /usr/local/include/net-snmp/library/snmp_logging.h
+ /usr/local/include/net-snmp/library/snmp_parse_args.h
+ /usr/local/include/net-snmp/library/snmp_secmod.h
+ /usr/local/include/net-snmp/library/snmp_service.h
+ /usr/local/include/net-snmp/library/snmp_transport.h
+ /usr/local/include/net-snmp/library/snmpusm.h
+ /usr/local/include/net-snmp/library/snmpv3-security-includes.h
+ /usr/local/include/net-snmp/library/snmpv3.h
+ /usr/local/include/net-snmp/library/system.h
+ /usr/local/include/net-snmp/library/tools.h
+ /usr/local/include/net-snmp/library/transform_oids.h
+ /usr/local/include/net-snmp/library/types.h
+ /usr/local/include/net-snmp/library/ucd_compat.h
+ /usr/local/include/net-snmp/library/vacm.h
+ /usr/local/include/net-snmp/mib_api.h
+ /usr/local/include/net-snmp/net-snmp-config.h
+ /usr/local/include/net-snmp/net-snmp-features.h
+ /usr/local/include/net-snmp/net-snmp-includes.h
+ /usr/local/include/net-snmp/output_api.h
+ /usr/local/include/net-snmp/pdu_api.h
+ /usr/local/include/net-snmp/session_api.h
+ /usr/local/include/net-snmp/snmpv3_api.h
+ /usr/local/include/net-snmp/types.h
+ /usr/local/include/net-snmp/utilities.h
+ /usr/local/include/net-snmp/varbind_api.h
+ /usr/local/include/net-snmp/version.h
 CMakeFiles/lib-mon.dir/Expression.cc.o
  /home/monsys/MonSys/Expression.cc
  /home/monsys/MonSys/Expression.h
@@ -192,6 +267,27 @@ CMakeFiles/lib-mon.dir/Network.cc.o
  /home/monsys/MonSys/common.h
  /home/monsys/MonSys/globals.h
  /home/monsys/MonSys/utils.h
+CMakeFiles/lib-mon.dir/PGBackend.cc.o
+ /home/monsys/MonSys/Backend.h
+ /home/monsys/MonSys/Filtered.h
+ /home/monsys/MonSys/MTSync.h
+ /home/monsys/MonSys/MTmap.h
+ /home/monsys/MonSys/Message.h
+ /home/monsys/MonSys/MessageQueue.h
+ /home/monsys/MonSys/PGBackend.cc
+ /home/monsys/MonSys/PGBackend.h
+ /home/monsys/MonSys/Parameter.h
+ /home/monsys/MonSys/Resource.h
+ /home/monsys/MonSys/Runable.h
+ /home/monsys/MonSys/Sensor.h
+ /home/monsys/MonSys/Time.h
+ /home/monsys/MonSys/Transport.h
+ /home/monsys/MonSys/common.h
+ /home/monsys/MonSys/globals.h
+ /home/monsys/MonSys/utils.h
+ /usr/include/postgresql/libpq-fe.h
+ /usr/include/postgresql/pg_config_ext.h
+ /usr/include/postgresql/postgres_ext.h
 CMakeFiles/lib-mon.dir/Parameter.cc.o
  /home/monsys/MonSys/Backend.h
  /home/monsys/MonSys/Expression.h
@@ -317,6 +413,178 @@ CMakeFiles/lib-mon.dir/S2SMapRobot.cc.o
  /home/monsys/MonSys/common.h
  /home/monsys/MonSys/globals.h
  /home/monsys/MonSys/utils.h
+CMakeFiles/lib-mon.dir/SNMPNetwork.cc.o
+ /home/monsys/MonSys/Backend.h
+ /home/monsys/MonSys/MTSync.h
+ /home/monsys/MonSys/MessageQueue.h
+ /home/monsys/MonSys/Network.h
+ /home/monsys/MonSys/Registry.h
+ /home/monsys/MonSys/Runable.h
+ /home/monsys/MonSys/SNMPNetwork.cc
+ /home/monsys/MonSys/SNMPNetwork.h
+ /home/monsys/MonSys/Transport.h
+ /home/monsys/MonSys/common.h
+ /home/monsys/MonSys/globals.h
+ /home/monsys/MonSys/utils.h
+ /usr/local/include/net-snmp/config_api.h
+ /usr/local/include/net-snmp/definitions.h
+ /usr/local/include/net-snmp/library/asn1.h
+ /usr/local/include/net-snmp/library/callback.h
+ /usr/local/include/net-snmp/library/check_varbind.h
+ /usr/local/include/net-snmp/library/container.h
+ /usr/local/include/net-snmp/library/container_binary_array.h
+ /usr/local/include/net-snmp/library/container_iterator.h
+ /usr/local/include/net-snmp/library/container_list_ssll.h
+ /usr/local/include/net-snmp/library/data_list.h
+ /usr/local/include/net-snmp/library/default_store.h
+ /usr/local/include/net-snmp/library/getopt.h
+ /usr/local/include/net-snmp/library/int64.h
+ /usr/local/include/net-snmp/library/keytools.h
+ /usr/local/include/net-snmp/library/lcd_time.h
+ /usr/local/include/net-snmp/library/md5.h
+ /usr/local/include/net-snmp/library/mib.h
+ /usr/local/include/net-snmp/library/mt_support.h
+ /usr/local/include/net-snmp/library/netsnmp-attribute-format.h
+ /usr/local/include/net-snmp/library/oid.h
+ /usr/local/include/net-snmp/library/oid_stash.h
+ /usr/local/include/net-snmp/library/parse.h
+ /usr/local/include/net-snmp/library/read_config.h
+ /usr/local/include/net-snmp/library/scapi.h
+ /usr/local/include/net-snmp/library/snmp-tc.h
+ /usr/local/include/net-snmp/library/snmp.h
+ /usr/local/include/net-snmp/library/snmpCallbackDomain.h
+ /usr/local/include/net-snmp/library/snmpIPv4BaseDomain.h
+ /usr/local/include/net-snmp/library/snmpIPv6BaseDomain.h
+ /usr/local/include/net-snmp/library/snmpTCPDomain.h
+ /usr/local/include/net-snmp/library/snmpTCPIPv6Domain.h
+ /usr/local/include/net-snmp/library/snmpUDPBaseDomain.h
+ /usr/local/include/net-snmp/library/snmpUDPDomain.h
+ /usr/local/include/net-snmp/library/snmpUDPIPv4BaseDomain.h
+ /usr/local/include/net-snmp/library/snmpUDPIPv6Domain.h
+ /usr/local/include/net-snmp/library/snmpUnixDomain.h
+ /usr/local/include/net-snmp/library/snmp_alarm.h
+ /usr/local/include/net-snmp/library/snmp_api.h
+ /usr/local/include/net-snmp/library/snmp_assert.h
+ /usr/local/include/net-snmp/library/snmp_client.h
+ /usr/local/include/net-snmp/library/snmp_debug.h
+ /usr/local/include/net-snmp/library/snmp_enum.h
+ /usr/local/include/net-snmp/library/snmp_impl.h
+ /usr/local/include/net-snmp/library/snmp_logging.h
+ /usr/local/include/net-snmp/library/snmp_parse_args.h
+ /usr/local/include/net-snmp/library/snmp_secmod.h
+ /usr/local/include/net-snmp/library/snmp_service.h
+ /usr/local/include/net-snmp/library/snmp_transport.h
+ /usr/local/include/net-snmp/library/snmpusm.h
+ /usr/local/include/net-snmp/library/snmpv3-security-includes.h
+ /usr/local/include/net-snmp/library/snmpv3.h
+ /usr/local/include/net-snmp/library/system.h
+ /usr/local/include/net-snmp/library/tools.h
+ /usr/local/include/net-snmp/library/transform_oids.h
+ /usr/local/include/net-snmp/library/types.h
+ /usr/local/include/net-snmp/library/ucd_compat.h
+ /usr/local/include/net-snmp/library/vacm.h
+ /usr/local/include/net-snmp/mib_api.h
+ /usr/local/include/net-snmp/net-snmp-config.h
+ /usr/local/include/net-snmp/net-snmp-features.h
+ /usr/local/include/net-snmp/net-snmp-includes.h
+ /usr/local/include/net-snmp/output_api.h
+ /usr/local/include/net-snmp/pdu_api.h
+ /usr/local/include/net-snmp/session_api.h
+ /usr/local/include/net-snmp/snmpv3_api.h
+ /usr/local/include/net-snmp/types.h
+ /usr/local/include/net-snmp/utilities.h
+ /usr/local/include/net-snmp/varbind_api.h
+ /usr/local/include/net-snmp/version.h
+CMakeFiles/lib-mon.dir/SNMPSensor.cc.o
+ /home/monsys/MonSys/Backend.h
+ /home/monsys/MonSys/MTSync.h
+ /home/monsys/MonSys/MTmap.h
+ /home/monsys/MonSys/Message.h
+ /home/monsys/MonSys/MessageQueue.h
+ /home/monsys/MonSys/Message_Body.h
+ /home/monsys/MonSys/Network.h
+ /home/monsys/MonSys/Parameter.h
+ /home/monsys/MonSys/Registry.h
+ /home/monsys/MonSys/Resource.h
+ /home/monsys/MonSys/Runable.h
+ /home/monsys/MonSys/SNMPNetwork.h
+ /home/monsys/MonSys/SNMPSensor.cc
+ /home/monsys/MonSys/SNMPSensor.h
+ /home/monsys/MonSys/Sensor.h
+ /home/monsys/MonSys/Time.h
+ /home/monsys/MonSys/Transport.h
+ /home/monsys/MonSys/common.h
+ /home/monsys/MonSys/globals.h
+ /home/monsys/MonSys/utils.h
+ /usr/local/include/net-snmp/config_api.h
+ /usr/local/include/net-snmp/definitions.h
+ /usr/local/include/net-snmp/library/asn1.h
+ /usr/local/include/net-snmp/library/callback.h
+ /usr/local/include/net-snmp/library/check_varbind.h
+ /usr/local/include/net-snmp/library/container.h
+ /usr/local/include/net-snmp/library/container_binary_array.h
+ /usr/local/include/net-snmp/library/container_iterator.h
+ /usr/local/include/net-snmp/library/container_list_ssll.h
+ /usr/local/include/net-snmp/library/data_list.h
+ /usr/local/include/net-snmp/library/default_store.h
+ /usr/local/include/net-snmp/library/getopt.h
+ /usr/local/include/net-snmp/library/int64.h
+ /usr/local/include/net-snmp/library/keytools.h
+ /usr/local/include/net-snmp/library/lcd_time.h
+ /usr/local/include/net-snmp/library/md5.h
+ /usr/local/include/net-snmp/library/mib.h
+ /usr/local/include/net-snmp/library/mt_support.h
+ /usr/local/include/net-snmp/library/netsnmp-attribute-format.h
+ /usr/local/include/net-snmp/library/oid.h
+ /usr/local/include/net-snmp/library/oid_stash.h
+ /usr/local/include/net-snmp/library/parse.h
+ /usr/local/include/net-snmp/library/read_config.h
+ /usr/local/include/net-snmp/library/scapi.h
+ /usr/local/include/net-snmp/library/snmp-tc.h
+ /usr/local/include/net-snmp/library/snmp.h
+ /usr/local/include/net-snmp/library/snmpCallbackDomain.h
+ /usr/local/include/net-snmp/library/snmpIPv4BaseDomain.h
+ /usr/local/include/net-snmp/library/snmpIPv6BaseDomain.h
+ /usr/local/include/net-snmp/library/snmpTCPDomain.h
+ /usr/local/include/net-snmp/library/snmpTCPIPv6Domain.h
+ /usr/local/include/net-snmp/library/snmpUDPBaseDomain.h
+ /usr/local/include/net-snmp/library/snmpUDPDomain.h
+ /usr/local/include/net-snmp/library/snmpUDPIPv4BaseDomain.h
+ /usr/local/include/net-snmp/library/snmpUDPIPv6Domain.h
+ /usr/local/include/net-snmp/library/snmpUnixDomain.h
+ /usr/local/include/net-snmp/library/snmp_alarm.h
+ /usr/local/include/net-snmp/library/snmp_api.h
+ /usr/local/include/net-snmp/library/snmp_assert.h
+ /usr/local/include/net-snmp/library/snmp_client.h
+ /usr/local/include/net-snmp/library/snmp_debug.h
+ /usr/local/include/net-snmp/library/snmp_enum.h
+ /usr/local/include/net-snmp/library/snmp_impl.h
+ /usr/local/include/net-snmp/library/snmp_logging.h
+ /usr/local/include/net-snmp/library/snmp_parse_args.h
+ /usr/local/include/net-snmp/library/snmp_secmod.h
+ /usr/local/include/net-snmp/library/snmp_service.h
+ /usr/local/include/net-snmp/library/snmp_transport.h
+ /usr/local/include/net-snmp/library/snmpusm.h
+ /usr/local/include/net-snmp/library/snmpv3-security-includes.h
+ /usr/local/include/net-snmp/library/snmpv3.h
+ /usr/local/include/net-snmp/library/system.h
+ /usr/local/include/net-snmp/library/tools.h
+ /usr/local/include/net-snmp/library/transform_oids.h
+ /usr/local/include/net-snmp/library/types.h
+ /usr/local/include/net-snmp/library/ucd_compat.h
+ /usr/local/include/net-snmp/library/vacm.h
+ /usr/local/include/net-snmp/mib_api.h
+ /usr/local/include/net-snmp/net-snmp-config.h
+ /usr/local/include/net-snmp/net-snmp-features.h
+ /usr/local/include/net-snmp/net-snmp-includes.h
+ /usr/local/include/net-snmp/output_api.h
+ /usr/local/include/net-snmp/pdu_api.h
+ /usr/local/include/net-snmp/session_api.h
+ /usr/local/include/net-snmp/snmpv3_api.h
+ /usr/local/include/net-snmp/types.h
+ /usr/local/include/net-snmp/utilities.h
+ /usr/local/include/net-snmp/varbind_api.h
+ /usr/local/include/net-snmp/version.h
 CMakeFiles/lib-mon.dir/Sensor.cc.o
  /home/monsys/MonSys/Backend.h
  /home/monsys/MonSys/MTSync.h

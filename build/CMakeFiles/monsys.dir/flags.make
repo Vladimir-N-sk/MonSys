@@ -6,5 +6,5 @@ CXX_FLAGS = -g   -pthread -fPIC -Wno-deprecated
 
 CXX_DEFINES = -DEXPRESSIONS
 
-CXX_INCLUDES = -I/usr/local/include 
+CXX_INCLUDES = -I/usr/local/include -I/usr/include/postgresql -I/usr/local/include/net-snmp/library 
 

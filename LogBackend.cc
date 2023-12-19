@@ -1,4 +1,3 @@
-// 30.11.2009 �������     if( msg->getAlarm() == NULL ) throw errmsg;
 
 #include "common.h"
 #include "globals.h"

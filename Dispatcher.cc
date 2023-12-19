@@ -1,4 +1,5 @@
 
+#include <sstream>
 #include "common.h"
 #include "globals.h"
 #include "utils.h"
@@ -21,22 +22,26 @@
     #include "SocketServerNetwork.h"
 #endif
 
+#include "SNMPSensor.h"
+#include "SNMPNetwork.h"
+#undef MAX_NAME_LEN      // buggy net-snmp
+
+
 #ifdef EXPRESSIONS
     #include "Expression.h"
     #include "Parser.h"    
 #endif
 
+#include "Logger.h"
 #include "RndSensor.h"
 #include "PseudoNetwork.h"
 #include "S2SMapRobot.h"
 #include "LogBackend.h"
 #include "AlarmBoolRobot.h"
+#include "PGBackend.h"
 
 #include "Dispatcher.h"
 
-#include <sstream>
-
-#include "Logger.h"
 
 const string TIMEOUT = "timeout";
 const string DELAY = "delay";
@@ -232,16 +237,11 @@ Runable* Dispatcher::makeSensor( const string& name)
 
 string addr= "";
 
-//    string addr = c[name]["addr"];
-//    if ( addr.size() > 0 ) addr = trim(addr);
-
-
     try {
         addr = trim(c[name]["addr"]);
     }
     catch (Config::NoSuchProp& e) {
     }
-
 
     Sensor* s = NULL;
 
@@ -250,11 +250,29 @@ string addr= "";
 
     Network& net = *networks[ c[name][NET]];
 
+    if ( NULL == s && type == "SNMPSensor") {
 
-    if ( type == "RndSensor") {
-        s = new RndSensor( name, addr, &net, read_timespec(c[name][DELAY]));
+        string tmp;
+        unsigned SNMP_VERSION = SNMP_VERSION_1;
+        try {
+            SNMP_VERSION = ( dec2<unsigned>( config[name]["version"]) == 1) ? SNMP_VERSION_1:SNMP_VERSION_2c;
+            MOND_DEBUG << "Parametr <" << name << "> set SNMP_VERSION = " << (tmp = ( dec2<unsigned>( config[name]["version"]) == 1) ? "SNMP_VERSION_1":"SNMP_VERSION_2c") << endl;
+        }
+        catch (Config::NoSuchProp& e) {
+            MOND_DEBUG << "Parametr <" << name <<"> default set SNMP_VERSION = SNMP_VERSION_1" << endl;
+        }
+
+
+        s = new SNMPSensor( name, addr,
+                            &dynamic_cast<SNMPNetwork&>( net),
+                            c[name]["host"],
+                            c[name]["var"], c[name]["community"], SNMP_VERSION,
+          read_timespec(c[name][TIMEOUT]), read_timespec(c[name][DELAY]));
     }
 
+    if ( NULL == s && type == "RndSensor") {
+        s = new RndSensor( name, addr, &net, read_timespec(c[name][DELAY]));
+    }
 
     if ( NULL == s) throw "Wrong sensor type: " + type;
 
@@ -325,8 +343,12 @@ Runable* Dispatcher::makeNetwork( const string& name)
 
     string type = config[name][TYPE];
     Network* n = NULL;
+
+    if ( NULL == n && type == "SNMPNetwork")
+        n = new SNMPNetwork();
+
     if ( type == "PseudoNetwork")
-               n = new PseudoNetwork();
+        n = new PseudoNetwork();
 
     if ( NULL == n)
                throw "Wrong network type: " + type;
@@ -345,6 +367,33 @@ Runable* Dispatcher::makeBackend( const string& name)
     const Config& c = config;
     string type = c[name][TYPE];
     Backend* b = NULL;
+
+        if ( NULL == b && type == "PGLBackend") {
+        b = new PGLBackend( config[name]["init"]);
+
+        stringstream strf( config[name]["filters"]);
+        string fn;
+        while ( strf >> ws >> fn, strf) {
+            Filter* f = NULL;
+            if ( fn == "TransparentFilter") f = new TransparentFilter();
+
+            if ( fn == "TimeThresholdFilter") f =
+                        new TimeThresholdFilter( static_cast<LogBackend*>(b), read_timespec(config[name]["period"])  );
+
+            if ( fn == "ThresholdFilter") f =
+                        new ThresholdFilter( static_cast<LogBackend*>(b));
+
+            if ( fn == "TimeFilter")
+                f = new TimeFilter( read_timespec(config[name]["period"]));
+
+            if ( fn == "AlarmFilter")
+                f = new AlarmFilter( Parameter::get( config[name]["semaphore"]));
+
+            if ( NULL != f)
+                static_cast<PGLBackend*>(b)->addFilter(f);
+        }
+    }
+
 
         if ( type == "LogBackend") {
         b = new LogBackend( c[name]["file"]);

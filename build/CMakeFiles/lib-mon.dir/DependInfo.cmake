@@ -18,6 +18,7 @@ set(CMAKE_DEPENDS_CHECK_CXX
   "/home/monsys/MonSys/MessageQueue.cc" "/home/monsys/MonSys/build/CMakeFiles/lib-mon.dir/MessageQueue.cc.o"
   "/home/monsys/MonSys/Message_Body.cc" "/home/monsys/MonSys/build/CMakeFiles/lib-mon.dir/Message_Body.cc.o"
   "/home/monsys/MonSys/Network.cc" "/home/monsys/MonSys/build/CMakeFiles/lib-mon.dir/Network.cc.o"
+  "/home/monsys/MonSys/PGBackend.cc" "/home/monsys/MonSys/build/CMakeFiles/lib-mon.dir/PGBackend.cc.o"
   "/home/monsys/MonSys/Parameter.cc" "/home/monsys/MonSys/build/CMakeFiles/lib-mon.dir/Parameter.cc.o"
   "/home/monsys/MonSys/Parser.cc" "/home/monsys/MonSys/build/CMakeFiles/lib-mon.dir/Parser.cc.o"
   "/home/monsys/MonSys/Parser.tab.cc" "/home/monsys/MonSys/build/CMakeFiles/lib-mon.dir/Parser.tab.cc.o"
@@ -27,6 +28,8 @@ set(CMAKE_DEPENDS_CHECK_CXX
   "/home/monsys/MonSys/Robot.cc" "/home/monsys/MonSys/build/CMakeFiles/lib-mon.dir/Robot.cc.o"
   "/home/monsys/MonSys/Runable.cc" "/home/monsys/MonSys/build/CMakeFiles/lib-mon.dir/Runable.cc.o"
   "/home/monsys/MonSys/S2SMapRobot.cc" "/home/monsys/MonSys/build/CMakeFiles/lib-mon.dir/S2SMapRobot.cc.o"
+  "/home/monsys/MonSys/SNMPNetwork.cc" "/home/monsys/MonSys/build/CMakeFiles/lib-mon.dir/SNMPNetwork.cc.o"
+  "/home/monsys/MonSys/SNMPSensor.cc" "/home/monsys/MonSys/build/CMakeFiles/lib-mon.dir/SNMPSensor.cc.o"
   "/home/monsys/MonSys/Sensor.cc" "/home/monsys/MonSys/build/CMakeFiles/lib-mon.dir/Sensor.cc.o"
   "/home/monsys/MonSys/utils.cc" "/home/monsys/MonSys/build/CMakeFiles/lib-mon.dir/utils.cc.o"
   )
@@ -40,6 +43,8 @@ set(CMAKE_TARGET_DEFINITIONS_CXX
 # The include file search paths:
 set(CMAKE_CXX_TARGET_INCLUDE_PATH
   "/usr/local/include"
+  "/usr/include/postgresql"
+  "/usr/local/include/net-snmp/library"
   )
 
 # Targets to which this target links.

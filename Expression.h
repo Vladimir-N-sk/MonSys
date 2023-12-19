@@ -70,7 +70,7 @@ public:
 
 private:
     UExpression();
-    const auto_ptr< Expression<A> > arg;
+    const shared_ptr< Expression<A> > arg;
     OP op;
 };
 
@@ -92,7 +92,8 @@ public:
 
 private:
     BExpression();
-    const auto_ptr< Expression<A> > larg, rarg;
+//AVN 28/11/2023    const auto_ptr< Expression<A> > larg, rarg;
+    const shared_ptr< Expression<A> > larg, rarg;
     OP op;
 };
 

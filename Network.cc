@@ -6,15 +6,6 @@
 #include "Message.h"
 #include "Network.h"
 
-/* AVN define in network.h
-Network::Network()
-{
-}
-
-Network::~Network()
-{
-}
-*/
 void Network::attach( Parameter *s, Backend *b)
 {
     listeners.add( s, b);

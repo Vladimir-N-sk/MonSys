@@ -536,6 +536,33 @@ Network.cc.s:
 	$(MAKE) -f CMakeFiles/lib-mon.dir/build.make CMakeFiles/lib-mon.dir/Network.cc.s
 .PHONY : Network.cc.s
 
+PGBackend.o: PGBackend.cc.o
+
+.PHONY : PGBackend.o
+
+# target to build an object file
+PGBackend.cc.o:
+	$(MAKE) -f CMakeFiles/lib-mon.dir/build.make CMakeFiles/lib-mon.dir/PGBackend.cc.o
+.PHONY : PGBackend.cc.o
+
+PGBackend.i: PGBackend.cc.i
+
+.PHONY : PGBackend.i
+
+# target to preprocess a source file
+PGBackend.cc.i:
+	$(MAKE) -f CMakeFiles/lib-mon.dir/build.make CMakeFiles/lib-mon.dir/PGBackend.cc.i
+.PHONY : PGBackend.cc.i
+
+PGBackend.s: PGBackend.cc.s
+
+.PHONY : PGBackend.s
+
+# target to generate assembly for a file
+PGBackend.cc.s:
+	$(MAKE) -f CMakeFiles/lib-mon.dir/build.make CMakeFiles/lib-mon.dir/PGBackend.cc.s
+.PHONY : PGBackend.cc.s
+
 Parameter.o: Parameter.cc.o
 
 .PHONY : Parameter.o
@@ -779,6 +806,60 @@ S2SMapRobot.cc.s:
 	$(MAKE) -f CMakeFiles/lib-mon.dir/build.make CMakeFiles/lib-mon.dir/S2SMapRobot.cc.s
 .PHONY : S2SMapRobot.cc.s
 
+SNMPNetwork.o: SNMPNetwork.cc.o
+
+.PHONY : SNMPNetwork.o
+
+# target to build an object file
+SNMPNetwork.cc.o:
+	$(MAKE) -f CMakeFiles/lib-mon.dir/build.make CMakeFiles/lib-mon.dir/SNMPNetwork.cc.o
+.PHONY : SNMPNetwork.cc.o
+
+SNMPNetwork.i: SNMPNetwork.cc.i
+
+.PHONY : SNMPNetwork.i
+
+# target to preprocess a source file
+SNMPNetwork.cc.i:
+	$(MAKE) -f CMakeFiles/lib-mon.dir/build.make CMakeFiles/lib-mon.dir/SNMPNetwork.cc.i
+.PHONY : SNMPNetwork.cc.i
+
+SNMPNetwork.s: SNMPNetwork.cc.s
+
+.PHONY : SNMPNetwork.s
+
+# target to generate assembly for a file
+SNMPNetwork.cc.s:
+	$(MAKE) -f CMakeFiles/lib-mon.dir/build.make CMakeFiles/lib-mon.dir/SNMPNetwork.cc.s
+.PHONY : SNMPNetwork.cc.s
+
+SNMPSensor.o: SNMPSensor.cc.o
+
+.PHONY : SNMPSensor.o
+
+# target to build an object file
+SNMPSensor.cc.o:
+	$(MAKE) -f CMakeFiles/lib-mon.dir/build.make CMakeFiles/lib-mon.dir/SNMPSensor.cc.o
+.PHONY : SNMPSensor.cc.o
+
+SNMPSensor.i: SNMPSensor.cc.i
+
+.PHONY : SNMPSensor.i
+
+# target to preprocess a source file
+SNMPSensor.cc.i:
+	$(MAKE) -f CMakeFiles/lib-mon.dir/build.make CMakeFiles/lib-mon.dir/SNMPSensor.cc.i
+.PHONY : SNMPSensor.cc.i
+
+SNMPSensor.s: SNMPSensor.cc.s
+
+.PHONY : SNMPSensor.s
+
+# target to generate assembly for a file
+SNMPSensor.cc.s:
+	$(MAKE) -f CMakeFiles/lib-mon.dir/build.make CMakeFiles/lib-mon.dir/SNMPSensor.cc.s
+.PHONY : SNMPSensor.cc.s
+
 Sensor.o: Sensor.cc.o
 
 .PHONY : Sensor.o
@@ -914,6 +995,9 @@ help:
 	@echo "... Network.o"
 	@echo "... Network.i"
 	@echo "... Network.s"
+	@echo "... PGBackend.o"
+	@echo "... PGBackend.i"
+	@echo "... PGBackend.s"
 	@echo "... Parameter.o"
 	@echo "... Parameter.i"
 	@echo "... Parameter.s"
@@ -941,6 +1025,12 @@ help:
 	@echo "... S2SMapRobot.o"
 	@echo "... S2SMapRobot.i"
 	@echo "... S2SMapRobot.s"
+	@echo "... SNMPNetwork.o"
+	@echo "... SNMPNetwork.i"
+	@echo "... SNMPNetwork.s"
+	@echo "... SNMPSensor.o"
+	@echo "... SNMPSensor.i"
+	@echo "... SNMPSensor.s"
 	@echo "... Sensor.o"
 	@echo "... Sensor.i"
 	@echo "... Sensor.s"

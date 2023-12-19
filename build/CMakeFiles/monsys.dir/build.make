@@ -91,6 +91,8 @@ monsys_EXTERNAL_OBJECTS =
 monsys: CMakeFiles/monsys.dir/monsys.cc.o
 monsys: CMakeFiles/monsys.dir/build.make
 monsys: liblib-mon.a
+monsys: /usr/lib/x86_64-linux-gnu/libpq.so
+monsys: /usr/local/lib/libnetsnmp.so
 monsys: CMakeFiles/monsys.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/monsys/MonSys/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX executable monsys"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/monsys.dir/link.txt --verbose=$(VERBOSE)
