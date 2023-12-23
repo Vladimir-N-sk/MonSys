@@ -52,16 +52,16 @@ int main(int argc, char **argv)
 	delete c;
 
         procSignals();
-        MOND_DEBUG << "shutdown" << endl;
+        MONSYS_DEBUG << "shutdown" << endl;
 
         return 0;
     }
     catch ( string& e) {
-        MOND_ERROR << e << endl;
+        MONSYS_ERROR << e << endl;
         return 0;
     }
     catch ( exception& e) {
-        MOND_ERROR << e.what() << endl;
+        MONSYS_ERROR << e.what() << endl;
         return 0;
     }
 }
@@ -104,18 +104,18 @@ void procSignals()
         switch ( sig) {
         case SIGTERM:
         case SIGINT:
-            MOND_DEBUG << "recieved signal: " << sig << endl;
+            MONSYS_DEBUG << "recieved signal: " << sig << endl;
             timetoexit = true;
             break;
 
         case SIGCHLD:
 
     while ( (pid_sig = waitpid(-1, &stat, WNOHANG)) > 0)
-        MOND_DEBUG << " Signal SIGCHLD, Child " << pid_sig <<  " terminated"<<endl;
+        MONSYS_DEBUG << " Signal SIGCHLD, Child " << pid_sig <<  " terminated"<<endl;
             break;
 
         default:
-            MOND_DEBUG << "unknown signal: " << sig << endl;
+            MONSYS_DEBUG << "unknown signal: " << sig << endl;
             break;
         }
     } while ( !timetoexit);
@@ -209,22 +209,22 @@ void startup( int argc, char** argv)
     }
 
 
-    MOND_DEBUG << printVersion() << endl;
-    MOND_DEBUG << "monsys started" << endl;
+    MONSYS_DEBUG << printVersion() << endl;
+    MONSYS_DEBUG << "monsys started" << endl;
 
     config = (config == "") ? CONFIG_BY_DEFAULT : config;
-    MOND_DEBUG << " Read config: " << config << endl;
+    MONSYS_DEBUG << " Read config: " << config << endl;
 
     cfile = new ifstream( config.data());
     if (!*cfile) throw runtime_error( "can't open " + config);
 
     if ( uname != "") {
-        MOND_DEBUG << "seting uid: " << uname << endl;
+        MONSYS_DEBUG << "seting uid: " << uname << endl;
         setuid( uname);
     }
 
     if ( daemon) {
-        MOND_DEBUG << "daemonizing" << endl;
+        MONSYS_DEBUG << "daemonizing" << endl;
         daemonize();
     }
 }

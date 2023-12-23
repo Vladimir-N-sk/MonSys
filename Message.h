@@ -138,7 +138,7 @@ public:
     {
         if ( i >= MAXALARM)
             throw runtime_error( source->getName() + ": alarm overflow");
-//            MOND_ERROR << source->getName() << ": alarm overflow" << endl;
+//            MONSYS_ERROR << source->getName() << ": alarm overflow" << endl;
         alarm = i;
     }
 
@@ -151,7 +151,7 @@ public:
     {
         if ( i > 0xff)
             throw runtime_error( source->getName() + ": status overflow");
-//            MOND_ERROR << source->getName() << ": status overflow" << endl;
+//            MONSYS_ERROR << source->getName() << ": status overflow" << endl;
         status = i;
     }
 

@@ -23,28 +23,28 @@ Message::Body<V>::Body(V v)
 template <typename V>
 string Message::Body<V>::toString()
 {
-    MOND_DEBUG << "unknown body type" << endl;
+    MONSYS_DEBUG << "unknown body type" << endl;
     return "";
 }
 
 template <typename V>
 double Message::Body<V>::toDouble()
 {
-    MOND_DEBUG << "unknown body type" << endl;
+    MONSYS_DEBUG << "unknown body type" << endl;
     return 0;
 }
 
 template <typename V>
 int Message::Body<V>::toInt()
 {
-    MOND_DEBUG << "unknown body type" << endl;
+    MONSYS_DEBUG << "unknown body type" << endl;
     return 0;
 }
 
 template <typename V>
 long Message::Body<V>::toLong()
 {
-    MOND_DEBUG << " unknown body type"  << endl;
+    MONSYS_DEBUG << " unknown body type"  << endl;
     return 0;
 }
 

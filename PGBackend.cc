@@ -16,36 +16,36 @@ PGLBackend::PGLBackend( const string& c)
         switch(PQstatus(conn))
         {
             case CONNECTION_STARTED:
-                MOND_DEBUG << "DB status: Подключение..." << conninfo << endl;
+                MONSYS_DEBUG << "DB status: Подключение..." << conninfo << endl;
                 break;
             case CONNECTION_MADE:
-                MOND_DEBUG << "DB status: Подключение к серверу..." << conninfo << endl;
+                MONSYS_DEBUG << "DB status: Подключение к серверу..." << conninfo << endl;
                 break;
             case CONNECTION_AWAITING_RESPONSE:
-                MOND_DEBUG << "DB status: Ожидание ответа от сервера" << conninfo << endl;
+                MONSYS_DEBUG << "DB status: Ожидание ответа от сервера" << conninfo << endl;
                 break;
             case CONNECTION_AUTH_OK:
-                MOND_DEBUG << "DB status: Аутентификация получена; ожидание завершения запуска серверной части." << conninfo << endl;
+                MONSYS_DEBUG << "DB status: Аутентификация получена; ожидание завершения запуска серверной части." << conninfo << endl;
                 break;
             case CONNECTION_SSL_STARTUP:
-                MOND_DEBUG << "DB status: Согласование SSL-шифрования." << endl;
+                MONSYS_DEBUG << "DB status: Согласование SSL-шифрования." << endl;
                 break;
             case CONNECTION_SETENV:
-                MOND_DEBUG << "DB status: Согласование значений параметров, зависящих от программной среды."<< endl;
+                MONSYS_DEBUG << "DB status: Согласование значений параметров, зависящих от программной среды."<< endl;
                 break;
             default:
-                MOND_DEBUG << "DB status: Не определено..." << conninfo << endl;
+                MONSYS_DEBUG << "DB status: Не определено..." << conninfo << endl;
         }
     }
     else
-        MOND_DEBUG << "DB status: Подключено - " << conninfo << endl;
+        MONSYS_DEBUG << "DB status: Подключено - " << conninfo << endl;
 }
 
 PGLBackend::~PGLBackend()
 {
     PQclear(res);
     PQfinish(conn);
-    MOND_DEBUG << "DB connection closed" << endl;
+    MONSYS_DEBUG << "DB connection closed" << endl;
 }
 
 void PGLBackend::thread()
@@ -57,11 +57,11 @@ void PGLBackend::thread()
     for(;;){
         try {
             if ( !checked) {
-                MOND_DEBUG << "DB checking..." << endl;
+                MONSYS_DEBUG << "DB checking..." << endl;
                 if ( ZEROTIME == ( down = lastRecordTime())) {
-                    MOND_DEBUG << "DB ok" << endl;
+                    MONSYS_DEBUG << "DB ok" << endl;
                 } else {
-                    MOND_DEBUG << "DB fixing..." << endl;
+                    MONSYS_DEBUG << "DB fixing..." << endl;
                     down = ZEROTIME;
                 }
                 checked = true;
@@ -94,14 +94,14 @@ void PGLBackend::thread()
             setBHMode( true);
             if ( ZEROTIME == down) down = now();
 
-            MOND_ERROR << "DB error: " << e.what() << endl;
+            MONSYS_ERROR << "DB error: " << e.what() << endl;
 
             while ( PQstatus(conn) != CONNECTION_OK) {
-            MOND_DEBUG << "Error connection to DB" << endl;
+            MONSYS_DEBUG << "Error connection to DB" << endl;
                 sleep( reconnectTimeout);
                 PQclear(res);
                 PQfinish(conn);
-            MOND_DEBUG << "Try connection to DB" << endl;
+            MONSYS_DEBUG << "Try connection to DB" << endl;
                 conn = PQconnectdb(conninfo.data());
             }
              sleep( reconnectTimeout); //XXX paranoia
@@ -109,28 +109,28 @@ void PGLBackend::thread()
         switch(PQstatus(conn))
         {
             case CONNECTION_OK:
-                MOND_DEBUG << "DB status: Подключено." << conninfo << endl;
+                MONSYS_DEBUG << "DB status: Подключено." << conninfo << endl;
                 break;
             case CONNECTION_STARTED:
-                MOND_DEBUG << "DB status: Подключение..." << conninfo << endl;
+                MONSYS_DEBUG << "DB status: Подключение..." << conninfo << endl;
                 break;
             case CONNECTION_MADE:
-                MOND_DEBUG << "DB status: Подключение к серверу..." << conninfo << endl;
+                MONSYS_DEBUG << "DB status: Подключение к серверу..." << conninfo << endl;
                 break;
             case CONNECTION_AWAITING_RESPONSE:
-                MOND_DEBUG << "DB status: Ожидание ответа от сервера" << conninfo << endl;
+                MONSYS_DEBUG << "DB status: Ожидание ответа от сервера" << conninfo << endl;
                 break;
             case CONNECTION_AUTH_OK:
-                MOND_DEBUG << "DB status: Аутентификация получена; ожидание завершения запуска серверной части." << conninfo << endl;
+                MONSYS_DEBUG << "DB status: Аутентификация получена; ожидание завершения запуска серверной части." << conninfo << endl;
                 break;
             case CONNECTION_SSL_STARTUP:
-                MOND_DEBUG << "DB status: Согласование SSL-шифрования." << endl;
+                MONSYS_DEBUG << "DB status: Согласование SSL-шифрования." << endl;
                 break;
             case CONNECTION_SETENV:
-                MOND_DEBUG << "DB status: Согласование значений параметров, зависящих от программной среды."<< endl;
+                MONSYS_DEBUG << "DB status: Согласование значений параметров, зависящих от программной среды."<< endl;
                 break;
             default:
-                MOND_DEBUG << "DB status: Не определено..." << conninfo << endl;
+                MONSYS_DEBUG << "DB status: Не определено..." << conninfo << endl;
         }
 
 

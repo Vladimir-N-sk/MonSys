@@ -74,7 +74,7 @@ void Dispatcher::doConfig() throw ( string, exception)
 
             try {              
                  if ( type.npos != type.rfind( "Network")) {
-                    MOND_DEBUG << "Network: " << *p << endl;                    
+                    MONSYS_DEBUG << "Network: " << *p << endl;                    
                     makeNetwork(*p)->run();                    
                     continue;                    
                  } else {
@@ -95,7 +95,7 @@ void Dispatcher::doConfig() throw ( string, exception)
 
             try {              
                  if ( type.npos != type.rfind( "Sensor")) {
-                    MOND_DEBUG << "Sensor: " << *p << endl;                    
+                    MONSYS_DEBUG << "Sensor: " << *p << endl;                    
                     makeSensor(*p)->run();
                     continue;                    
                  } else {
@@ -117,7 +117,7 @@ void Dispatcher::doConfig() throw ( string, exception)
 
             try {              
                  if ( type.npos != type.rfind( "Robot")) {
-                    MOND_DEBUG << "robot: " << *p << endl;                    
+                    MONSYS_DEBUG << "robot: " << *p << endl;                    
                     makeRobot(*p)->run();                  
                     continue;
                  } else {
@@ -139,7 +139,7 @@ void Dispatcher::doConfig() throw ( string, exception)
 
             try {              
                  if ( type.npos != type.rfind( "Backend")) {
-                    MOND_DEBUG << "Backend: " << *p << endl;                    
+                    MONSYS_DEBUG << "Backend: " << *p << endl;                    
                     makeBackend(*p)->run();                  
                     continue;
                  } else {
@@ -166,7 +166,7 @@ void Dispatcher::doConfig() throw ( string, exception)
 
         if ( type.npos != type.rfind( "Robot")
           || type.npos != type.rfind( "Backend")) {
-            MOND_DEBUG << "attaching parameters to " << *p << endl;
+            MONSYS_DEBUG << "attaching parameters to " << *p << endl;
             attachBackend( config[*p]);
         }
     }
@@ -259,10 +259,10 @@ string addr= "";
         unsigned SNMP_VERSION = SNMP_VERSION_1;
         try {
             SNMP_VERSION = ( dec2<unsigned>( config[name]["version"]) == 1) ? SNMP_VERSION_1:SNMP_VERSION_2c;
-            MOND_DEBUG << "Parametr <" << name << "> set SNMP_VERSION = " << (tmp = ( dec2<unsigned>( config[name]["version"]) == 1) ? "SNMP_VERSION_1":"SNMP_VERSION_2c") << endl;
+            MONSYS_DEBUG << "Parametr <" << name << "> set SNMP_VERSION = " << (tmp = ( dec2<unsigned>( config[name]["version"]) == 1) ? "SNMP_VERSION_1":"SNMP_VERSION_2c") << endl;
         }
         catch (Config::NoSuchProp& e) {
-            MOND_DEBUG << "Parametr <" << name <<"> default set SNMP_VERSION = SNMP_VERSION_1" << endl;
+            MONSYS_DEBUG << "Parametr <" << name <<"> default set SNMP_VERSION = SNMP_VERSION_1" << endl;
         }
 
 
@@ -443,7 +443,7 @@ void Dispatcher::attachBackend( const Config::Properties& prop)
         stringstream xx( prop["dontattach"]);
         string dont;
         while ( xx >> ws >> dont, xx) {
-            MOND_DEBUG << "dontattaching " << dont
+            MONSYS_DEBUG << "dontattaching " << dont
                        << " to " << b_name << endl;
 	dontattach_list.push_back(dont);
 	}
@@ -458,7 +458,7 @@ void Dispatcher::attachBackend( const Config::Properties& prop)
                                                 dontattach_list.end(),
                                                 (*i)->getName())) continue;
 
-            MOND_DEBUG << "attaching " << (*i)->getName()
+            MONSYS_DEBUG << "attaching " << (*i)->getName()
                        << " to " << b_name << endl;
             attach( (*i)->getName(), b_name);
         }
@@ -467,7 +467,7 @@ void Dispatcher::attachBackend( const Config::Properties& prop)
         stringstream s( prop["parameters"]);
         string sens;
         while ( s >> ws >> sens, s) {
-            MOND_DEBUG << "attaching " << sens
+            MONSYS_DEBUG << "attaching " << sens
                        << " to " << b_name << endl;
             attach( sens, b_name);
         }
@@ -482,7 +482,7 @@ void Dispatcher::attach( const string& sensor, const string& backend)
 {
     Parameter* const s = Parameter::getByName( sensor);
     if ( NULL == s) {
-        MOND_ERROR << "missed parameter: " << sensor << endl;
+        MONSYS_ERROR << "missed parameter: " << sensor << endl;
         return;
     }
 
@@ -509,7 +509,7 @@ void Dispatcher::detach( const string& sensor)
 Dispatcher::Dispatcher( const Config& c)
  : config(c)
 {
-    MOND_DEBUG << "Dispatcher constructor" << endl;
+    MONSYS_DEBUG << "Dispatcher constructor" << endl;
 }
 
 Dispatcher::~Dispatcher()

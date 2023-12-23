@@ -14,13 +14,13 @@ Message* VHolder::getLastMessage() const throw (Expr::UnfindedVar)
     const MessagePool::iterator p =  store->find(param);
 
     if ( store->end() == p) throw Expr::UnfindedVar();
-//    MOND_ERROR << "STRING 3"  << endl;
+//    MONSYS_ERROR << "STRING 3"  << endl;
     return p->second;
 }
 
 Message* PHolder::getLastMessage() const throw()
 {
-//    MOND_ERROR << "STRING 2"  << endl;
+//    MONSYS_ERROR << "STRING 2"  << endl;
     return param->getLM();
 }
 
@@ -30,7 +30,7 @@ bool AlarmExpression::evaluate() const
 {
 
 	try {
-//MOND_DEBUG << "12 Name: "<<  getLastMessage()->getParameterName()<< "AlarmExpression return getLastMessage()->getAlarm: "<<  getLastMessage()->getAlarm()
+//MONSYS_DEBUG << "12 Name: "<<  getLastMessage()->getParameterName()<< "AlarmExpression return getLastMessage()->getAlarm: "<<  getLastMessage()->getAlarm()
 //<< " getLastMessage()->Type:"<<  getLastMessage()->getSource()->getProperties()->type
 //<< endl;
 
@@ -47,7 +47,7 @@ return 0;
 double ValueExpression::evaluate() const
                         throw (Expr::UnfindedVar, Message::empty)
 {
-//    MOND_ERROR << "STRING 4"  << endl;
+//    MONSYS_ERROR << "STRING 4"  << endl;
         return getLastMessage()->getDoubleValue();
 }
 

@@ -32,7 +32,7 @@ void S2SMapRobot::automat(Message* m)
         const S2SMapRobot::Map::const_iterator ip = i2smap.find(i);
 
         if ( i2smap.end() == ip) {
-            MOND_DEBUG << "can not translate " << i << " to string" << endl;
+            MONSYS_DEBUG << "can not translate " << i << " to string" << endl;
             Message * const n = new Message(this, "No data");
             n->post();
 	}
@@ -40,7 +40,7 @@ void S2SMapRobot::automat(Message* m)
             Message * const n = new Message(this, ip->second);
             n->setAlarm( m->getAlarm());
             n->post();
-MOND_DEBUG << "S2S MsgName:"<<n->getParameterName() << " MsgText:"<<  n->getTextValue() << " MsgAlarm:"<<  n->getAlarm() <<endl;
+MONSYS_DEBUG << "S2S MsgName:"<<n->getParameterName() << " MsgText:"<<  n->getTextValue() << " MsgAlarm:"<<  n->getAlarm() <<endl;
 
         }
     }
@@ -70,11 +70,11 @@ void D2DMapRobot::automat(Message* m)
 
     try {
         const string i = double2str(m->getDoubleValue());
-//            MOND_DEBUG << "D2D i: " << i  << " getInt:"<< m->getIntValue()<< " getDouble"<< m->getDoubleValue()<<endl;
+//            MONSYS_DEBUG << "D2D i: " << i  << " getInt:"<< m->getIntValue()<< " getDouble"<< m->getDoubleValue()<<endl;
         const D2DMapRobot::Map::const_iterator ip = d2dmap.find(i);
 
         if ( d2dmap.end() == ip) {
-            MOND_DEBUG << "can not translate " << i << " to string" << endl;
+            MONSYS_DEBUG << "can not translate " << i << " to string" << endl;
             Message * const n = new Message(this, "no data");
             n->post();
         } else {
@@ -108,15 +108,17 @@ void Timeticks2TimeStringRobot::automat(Message* m)
 
     try {
          int tt = m->getIntValue();
-         int hour =  tt/360000 ;
-         int minute = tt/6000 - hour*60;
-         int seconds = tt/100 - hour*3600 - minute*60;
-         string str = int2str(hour,2,'0')+":"+int2str(minute,2,'0')+":"+int2str(seconds,2,'0');
+         int day = tt/8640000;
+         int hour =  (tt - day*8640000)/360000;
+         int minute = (tt - day*8640000 - hour*360000)/6000;         
+         int seconds = tt/100 - day*86400 - hour*3600 - minute*60;         
 
+         string str = int2str(day)+" days "+int2str(hour,2,'0')+":"+int2str(minute,2,'0')+":"+int2str(seconds,2,'0');
+          
             Message * const n = new Message(this, str);
             n->setAlarm( m->getAlarm());
             n->post();
-
+MONSYS_DEBUG << this->getName()<< ":" << str <<endl;
     }
     catch ( Message::empty& e) {
       Message * const n = new Message(this);

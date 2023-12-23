@@ -22,12 +22,12 @@ bool MessageBuffer::isEmpty() const throw(runtime_error)
 
 void MessageBuffer::putMessage( Message* msg) throw(runtime_error)
 {
-MOND_DEBUG << " MessageBuffer  msg->getname:" <<msg->getParameterName()<< " msg->gettextvalue:" <<msg->getTextValue()  << endl;
+MONSYS_DEBUG << " MessageBuffer  msg->getname:" <<msg->getParameterName()<< " msg->gettextvalue:" <<msg->getTextValue()  << endl;
     msg->incUses();
 
     Parameter* const p = msg->getSource();
 
-MOND_DEBUG << " MessageBuffer  p->getname:" <<p->getName()<< endl;
+MONSYS_DEBUG << " MessageBuffer  p->getname:" <<p->getName()<< endl;
     buf_type::iterator i;
 
     if ( buf.end() == (i = buf.find( p))) {
@@ -38,7 +38,7 @@ MOND_DEBUG << " MessageBuffer  p->getname:" <<p->getName()<< endl;
 
         i->second->decUses();
         i->second = msg;
-        MOND_DEBUG << "MessageBuffer owerwrites == " << ++overwrites << endl;
+        MONSYS_DEBUG << "MessageBuffer owerwrites == " << ++overwrites << endl;
 
     }
 }

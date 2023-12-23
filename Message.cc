@@ -17,7 +17,7 @@
 
 void Message::post()
 {
-//  MOND_DEBUG << " Post msg->getname:" <<getParameterName()<< " getDoubleValue:" << getDoubleValue()  << endl;
+//  MONSYS_DEBUG << " Post msg->getname:" <<getParameterName()<< " getDoubleValue:" << getDoubleValue()  << endl;
     source->postMessage( this);
 }
 
@@ -34,7 +34,7 @@ string Message::serialize()
     }
     catch ( empty& e) {
     }
-//    MOND_DEBUG << "getTime(): " << getTime()<< " Str: "<< buf.str() << endl;
+//    MONSYS_DEBUG << "getTime(): " << getTime()<< " Str: "<< buf.str() << endl;
     return buf.str();
 }
 
@@ -59,7 +59,7 @@ Message* Message::unserialize( Parameter* p, const string& s)
         msg = new Message( p, dec2<double>( s0), nanosec2timespec( ts));
         break;
     default:
-        MOND_DEBUG << "valtype == " << p->getProperties()->type << endl;
+        MONSYS_DEBUG << "valtype == " << p->getProperties()->type << endl;
         throw runtime_error("unknown valtype");
     }
 
@@ -156,11 +156,11 @@ bool Message::operator==( Message& rhs) throw (exception)
                              + rhs_s->getName());
 
     try {
-//MOND_DEBUG<< "MESSAGE 000"<<endl;
+//MONSYS_DEBUG<< "MESSAGE 000"<<endl;
 
         if ( lhs.getAlarm() != rhs.getAlarm()
              || lhs.getStatus() != rhs.getStatus()) {
-//MOND_DEBUG<< "MESSAGE DIFFERENT ALARM!"<<endl;
+//MONSYS_DEBUG<< "MESSAGE DIFFERENT ALARM!"<<endl;
           return false;
         }
 
@@ -168,13 +168,13 @@ bool Message::operator==( Message& rhs) throw (exception)
 
         case 0://text
         case 4://AVN 10.10.2017 text + no audio alarm
-//MOND_DEBUG<< "MESSAGE TYPE 0 lhs.getTextValue():"<< lhs.getTextValue()<< "rhs.getTextValue() " <<rhs.getTextValue() <<endl;
+//MONSYS_DEBUG<< "MESSAGE TYPE 0 lhs.getTextValue():"<< lhs.getTextValue()<< "rhs.getTextValue() " <<rhs.getTextValue() <<endl;
             if ( lhs.getTextValue() == rhs.getTextValue()) return true;
             break;
 
         case 1://number
         case 5://AVN 10.10.2017 number + no audio alarm
-//MOND_DEBUG<< "A("<< lhs.getDoubleValue()<< ") - B ("<< rhs.getDoubleValue()<< ") = ("<< fabs(lhs.getDoubleValue() - rhs.getDoubleValue())<< ")"<<endl;
+//MONSYS_DEBUG<< "A("<< lhs.getDoubleValue()<< ") - B ("<< rhs.getDoubleValue()<< ") = ("<< fabs(lhs.getDoubleValue() - rhs.getDoubleValue())<< ")"<<endl;
 
             if ( fabs(lhs.getDoubleValue() - rhs.getDoubleValue())
                        < lhs_s->getProperties()->threshold) return true;
@@ -182,12 +182,12 @@ bool Message::operator==( Message& rhs) throw (exception)
 
         case 3://bool
         case 7://AVN 10.10.2017 bool + no audio alarm
-//MOND_DEBUG<< "MESSAGE TYPE 3"<<endl;
+//MONSYS_DEBUG<< "MESSAGE TYPE 3"<<endl;
             return true;
         }
     }
     catch ( Message::empty& e) {
     }
-//MOND_DEBUG<< "MESSAGE TYPE END"<<endl;
+//MONSYS_DEBUG<< "MESSAGE TYPE END"<<endl;
     return false;
 }

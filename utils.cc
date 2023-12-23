@@ -192,7 +192,7 @@ ostream& operator<<( ostream& f, const timespec& t)
 
 istream& operator>>( istream& f, timespec& t)
 {
-    MOND_DEBUG << "operator utils str 198 " <<endl;
+    MONSYS_DEBUG << "operator utils str 198 " <<endl;
     tm localTime;
     unsigned i; char c;
 
@@ -215,7 +215,7 @@ istream& operator>>( istream& f, timespec& t)
 
 istream& operator>>( istream& f, QuotedString& s)
 {
-    MOND_DEBUG << "operator utils str 220 " <<endl;
+    MONSYS_DEBUG << "operator utils str 220 " <<endl;
     noskipws( f);
     f >> ws;
 
@@ -288,7 +288,7 @@ void sig_chld(int signo)
 //    int     stat;
 
 //    while ( (pid_chld = waitpid(-1, &stat, WNOHANG)) > 0)
-//        MOND_DEBUG << "sig_chld, Child " << pid_chld <<  " terminated"<<endl;
+//        MONSYS_DEBUG << "sig_chld, Child " << pid_chld <<  " terminated"<<endl;
     return;
 }
 
@@ -331,7 +331,7 @@ signal(SIGCHLD, sig_chld);
 
     umask(0);
 
-    MOND_DEBUG << "daemon started" << endl;
+    MONSYS_DEBUG << "daemon started" << endl;
 }
 
 static const long BILLION = 1000*1000*1000;
@@ -381,7 +381,7 @@ timespec now()
 // 31536000 sec == 1 year
     if ( t.tv_sec < 31536000)
         throw runtime_error( "clock are broken: " + timespec2isotime( t));
-//    MOND_DEBUG << "now(): "<< t << endl;
+//    MONSYS_DEBUG << "now(): "<< t << endl;
     return t;
 }
 
@@ -523,7 +523,7 @@ bool BEcheckCRC( const string& bcrc )
       crc2=bcrc.substr( (bcrc.size()-4), 3  );
 
     if ( crc1 == crc2 ) return true;
-//MOND_DEBUG << this->getName() << " crc1:" << crc1<< " crc2:"<< crc2 << endl;
+//MONSYS_DEBUG << this->getName() << " crc1:" << crc1<< " crc2:"<< crc2 << endl;
     return false;
 }
 

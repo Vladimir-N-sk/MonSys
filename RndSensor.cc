@@ -20,7 +20,7 @@ Message* RndSensor::getSensorData() throw(exception)
 
     double val;
     Message *m = new Message( this, val=drand48());
-MOND_DEBUG << "RndSensor:"<< val  <<  endl;    
+MONSYS_DEBUG << "RndSensor:"<< val  <<  endl;    
     return m;
 }
 
@@ -54,27 +54,27 @@ Message* ScriptSensor::getSensorData() throw( runtime_error)
              char* buf = new char[100];
              FILE *ptr;
               int pcl;
-//MOND_DEBUG << "PCLOSE 1"  <<  endl;
+//MONSYS_DEBUG << "PCLOSE 1"  <<  endl;
 try {
 
              if ((ptr = popen(s.c_str(), "r")) != NULL)
                      while (fgets(buf, 99, ptr) != NULL)
 
-//                    MOND_DEBUG << this->getName() << "Before PCLOSE:"<<  endl;
+//                    MONSYS_DEBUG << this->getName() << "Before PCLOSE:"<<  endl;
 
                 pcl =  pclose(ptr);
 
-//                    MOND_DEBUG << this->getName() << " After PCLOSE:"<< pcl <<  endl;
+//                    MONSYS_DEBUG << this->getName() << " After PCLOSE:"<< pcl <<  endl;
 
                if ( pcl != 0 ) {
 
-               MOND_DEBUG << this->getName() << " PCLOSE not NULL: "<< pcl <<  endl;
+               MONSYS_DEBUG << this->getName() << " PCLOSE not NULL: "<< pcl <<  endl;
                exit(1);
              }
 
      if ( ptr != NULL ) (void) pclose(ptr);
 
-MOND_DEBUG << this->getName()<< " Command:" << s << " Result:"<< buf<< endl;
+MONSYS_DEBUG << this->getName()<< " Command:" << s << " Result:"<< buf<< endl;
 
     sss="";
     for (int i=0;buf[i]!=NULL;i++) sss=sss+buf[i];
@@ -82,21 +82,21 @@ MOND_DEBUG << this->getName()<< " Command:" << s << " Result:"<< buf<< endl;
     sss=trim(sss);
 
                 if ( 1 == getProperties()->type ) {
-//                    MOND_DEBUG << this->getName() << " Before dec2double: "<< sss< endl;
+//                    MONSYS_DEBUG << this->getName() << " Before dec2double: "<< sss< endl;
 
                     if ( !ICPSensor::checkHEX(sss)) {
                       sss = this->getName()+" Error check HEX answer:"+sss ;
                       throw runtime_error( sss );
                     }
 
-//                    MOND_DEBUG << this->getName() << " Before dec2double HEX" << sss <<  endl;
+//                    MONSYS_DEBUG << this->getName() << " Before dec2double HEX" << sss <<  endl;
 
                     msg = new Message( this, dec2<double>(sss));
-//                    MOND_DEBUG << this->getName() << " After dec2double"<<  endl;
+//                    MONSYS_DEBUG << this->getName() << " After dec2double"<<  endl;
                 } else {
-//                    MOND_DEBUG << this->getName() << " Before new Msg"<<  endl;
+//                    MONSYS_DEBUG << this->getName() << " Before new Msg"<<  endl;
                     msg = new Message( this, sss);
-//                    MOND_DEBUG << this->getName() << " After new Msg"<<  endl;
+//                    MONSYS_DEBUG << this->getName() << " After new Msg"<<  endl;
                 }
 
     }
@@ -105,7 +105,7 @@ MOND_DEBUG << this->getName()<< " Command:" << s << " Result:"<< buf<< endl;
 //        return;
     }
     catch (...) {
-//        MOND_DEBUG << "unknown exception" << endl;
+//        MONSYS_DEBUG << "unknown exception" << endl;
         throw runtime_error( "unknown error ScriptSensor");
     }
 
@@ -135,7 +135,7 @@ Message* FileReadSensor::getSensorData() throw( runtime_error)
                 sss="";
                 while ( infile.get(ch) )   sss +=ch;
                 infile.close();
-MOND_DEBUG << "Read file " << s << ": Date:"<< sss<< endl;
+MONSYS_DEBUG << "Read file " << s << ": Date:"<< sss<< endl;
 
     sss=trim(sss);
 
@@ -165,7 +165,7 @@ FileReadSensor::FileReadSensor( const string& name, const Address& a,
 
 Message* ConstSensor::getSensorData() throw(exception)
 {
-//MOND_DEBUG << this->getName() << " Const:" << n <<endl;
+//MONSYS_DEBUG << this->getName() << " Const:" << n <<endl;
     return new Message( this, n);
 }
 
@@ -219,8 +219,8 @@ Message* ConstDiscrSensor::getSensorData() throw(exception)
 
     const unsigned readed = hex2<unsigned>(str);
 
-//MOND_DEBUG << "STR:" << str << "END"<<endl;
-//    MOND_DEBUG << "From DI :" << readed << endl;
+//MONSYS_DEBUG << "STR:" << str << "END"<<endl;
+//    MONSYS_DEBUG << "From DI :" << readed << endl;
 
 for ( int bit=0; bit<16; bit++  ) {
 
@@ -386,7 +386,7 @@ for ( int bit=0; bit<16; bit++  ) {
 			}
         break;
     default:
-        MOND_DEBUG << "End of discret number: "<< bit << endl;
+        MONSYS_DEBUG << "End of discret number: "<< bit << endl;
         throw runtime_error("unknown discretnumber");
     }
 

@@ -30,7 +30,7 @@ Message* SNMPSensor::getSensorData() throw (exception)
 #endif
         for (vars = response->variables; vars; vars = vars->next_variable) {
             int counter=1;
-//            MOND_DEBUG << "vars->type == " << uns2hex(vars->type, 2) << endl;
+            MONSYS_DEBUG << "vars->type == " << uns2hex(vars->type, 2) << endl;
             switch (vars->type) {
             case ASN_OCTET_STR: {
                 const string tmps( reinterpret_cast<char*>(vars->val.string),
@@ -38,7 +38,7 @@ Message* SNMPSensor::getSensorData() throw (exception)
                 Message *msg;
 
 #ifndef PLAINSNMP
-            MOND_DEBUG <<this->getName()<< " SNMPSensor ASN_OCTET_STR_1:" << tmps <<" type:"<< getProperties()->type<<endl;
+            MONSYS_DEBUG <<this->getName()<< " SNMPSensor ASN_OCTET_STR_1:" << tmps <<" type:"<< getProperties()->type<<endl;
                 if ( '#' == tmps[0]) //XXX
 					msg = Message::unserialize( this, tmps.substr(1));
                 else  if ( 1 == getProperties()->type )
@@ -46,7 +46,7 @@ Message* SNMPSensor::getSensorData() throw (exception)
                 else
                     msg = new Message( this, tmps);
 #else
-            MOND_DEBUG <<this->getName()<< " SNMPSensor ASN_OCTET_STR_2:" << tmps <<" type:"<< getProperties()->type<<endl;
+            MONSYS_DEBUG <<this->getName()<< " SNMPSensor ASN_OCTET_STR_2:" << tmps <<" type:"<< getProperties()->type<<endl;
                 if ( 1 == getProperties()->type )
                     msg = new Message( this, dec2<double>( tmps));
                 else
@@ -60,7 +60,7 @@ Message* SNMPSensor::getSensorData() throw (exception)
             case ASN_INTEGER:
             case ASN_COUNTER: {
                 Message *msg = new Message( this, *vars->val.integer);
-//            MOND_DEBUG <<this->getName()<< " SNMPSensor ASN_COUNTER:" << *vars->val.integer << endl;
+//            MONSYS_DEBUG <<this->getName()<< " SNMPSensor ASN_COUNTER:" << *vars->val.integer << endl;
                 snmp_free_pdu( response);
                 return msg;
             }
@@ -78,7 +78,7 @@ Message* SNMPSensor::getSensorData() throw (exception)
 
     if ( errcode != STAT_TIMEOUT) {
         string tmps = snmp_errstring( response->errstat);
-//       MOND_DEBUG <<this->getName()<< " SNMPSensor STAT_TIMEOUT:" << tmps << endl;
+//       MONSYS_DEBUG <<this->getName()<< " SNMPSensor STAT_TIMEOUT:" << tmps << endl;
         snmp_free_pdu(response);
         throw ReadError( tmps);
     }
@@ -122,7 +122,7 @@ SNMPSensor::SNMPSensor(const string& name, const Address& a, SNMPNetwork *n,
     if ( 1 != read_objid( var.c_str(), anOID, &anOID_len)) {
         snmp_sess_close(sessp);
         sessp = NULL;
-        throw "unknown snmp id: " + var;
+        throw "unknown snmp oid: " + var;
     }
 }
 
@@ -159,7 +159,7 @@ Message* SNMP2Sensor::getSensorData() throw (exception)
 #endif
         for (vars = response->variables; vars; vars = vars->next_variable) {
             int counter=1;
-//            MOND_DEBUG << "vars->type == " << vars->type << endl;
+//            MONSYS_DEBUG << "vars->type == " << vars->type << endl;
             switch (vars->type) {
             case ASN_OCTET_STR: {
                 const string tmps( reinterpret_cast<char*>(vars->val.string),
@@ -167,7 +167,7 @@ Message* SNMP2Sensor::getSensorData() throw (exception)
                 Message *msg;
 
 #ifndef PLAINSNMP
-            MOND_DEBUG <<this->getName()<< " SNMP2Sensor ASN_OCTET_STR_1:" << tmps <<" type:"<< getProperties()->type<<endl;
+            MONSYS_DEBUG <<this->getName()<< " SNMP2Sensor ASN_OCTET_STR_1:" << tmps <<" type:"<< getProperties()->type<<endl;
                 if ( '#' == tmps[0]) //XXX
                     msg = Message::unserialize( this, tmps.substr(1));
                 else  if ( 1 == getProperties()->type )
@@ -175,7 +175,7 @@ Message* SNMP2Sensor::getSensorData() throw (exception)
                 else
                     msg = new Message( this, tmps);
 #else
-            MOND_DEBUG <<this->getName()<< " SNMP2Sensor ASN_OCTET_STR_2:" << tmps <<" type:"<< getProperties()->type<<endl;
+            MONSYS_DEBUG <<this->getName()<< " SNMP2Sensor ASN_OCTET_STR_2:" << tmps <<" type:"<< getProperties()->type<<endl;
                 if ( 1 == getProperties()->type )
                     msg = new Message( this, dec2<double>( tmps));
                 else
@@ -191,7 +191,7 @@ Message* SNMP2Sensor::getSensorData() throw (exception)
             case ASN_INTEGER:
             case ASN_COUNTER: {
                 Message *msg = new Message( this, *vars->val.integer);
-            MOND_DEBUG <<this->getName()<< " SNMP2Sensor ASN_COUNTER:" << *vars->val.integer << endl;
+            MONSYS_DEBUG <<this->getName()<< " SNMP2Sensor ASN_COUNTER:" << *vars->val.integer << endl;
                 snmp_free_pdu( response);
                 return msg;
             }
@@ -209,7 +209,7 @@ Message* SNMP2Sensor::getSensorData() throw (exception)
 
     if ( errcode != STAT_TIMEOUT) {
         string tmps = snmp_errstring( response->errstat);
-       MOND_DEBUG <<this->getName()<< " SNMP2Sensor STAT_TIMEOUT:" << tmps << endl;
+       MONSYS_DEBUG <<this->getName()<< " SNMP2Sensor STAT_TIMEOUT:" << tmps << endl;
         snmp_free_pdu(response);
         throw ReadError( tmps);
     }

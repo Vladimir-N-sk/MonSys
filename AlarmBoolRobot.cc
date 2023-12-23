@@ -46,7 +46,7 @@ void ArithmeticRobot::sendMessage()
 {
     Message * const n = new Message( this, expr->evaluate(), pool.center());
     n->post();
-  MOND_DEBUG << "ArithmeticRobot name: "<< n->getParameterName()<< " value: "<< n->getTextValue() <<  endl;    
+  MONSYS_DEBUG << "ArithmeticRobot name: "<< n->getParameterName()<< " value: "<< n->getTextValue() <<  endl;    
 }
 
 void AlarmBoolRobot::sendMessage()

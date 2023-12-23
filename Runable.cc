@@ -26,13 +26,13 @@ void* Runable::wrapper1( void* obj) throw()
         for(;;) static_cast<Runable*>(obj)->thread();
     }
     catch ( exception& e) {
-        MOND_ERROR << e.what() << endl;
+        MONSYS_ERROR << e.what() << endl;
     }
     catch (...) {
-        MOND_ERROR << "unknown exception" << endl;
+        MONSYS_ERROR << "unknown exception" << endl;
     }
 
-    MOND_ERROR
+    MONSYS_ERROR
 #ifdef TYPEINFO
               << typeid(*obj).name() << " "
 #endif
@@ -48,7 +48,7 @@ void* Runable::wrapper( void* obj) throw()
 
        const timespec minute = { 60, 60};
        nanosleep( minute); //XXX
-       MOND_ERROR << "trynig to restart" << endl;
+       MONSYS_ERROR << "trynig to restart" << endl;
     }
     return NULL;
 }

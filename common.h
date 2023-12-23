@@ -4,9 +4,9 @@
 
 using namespace std;
 
-#define MOND_ERROR (*cerror_log)
-#define MOND_WARNING (*cwarning_log)
-#define MOND_DEBUG (*cdebug_log)
+#define MONSYS_ERROR (*cerror_log)
+#define MONSYS_WARNING (*cwarning_log)
+#define MONSYS_DEBUG (*cdebug_log)
 
 #define MAXALARM 9
 //#define MAXALARM 5

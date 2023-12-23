@@ -71,10 +71,10 @@ void RTSensor::body()
         if ( getPStatus() & WEDGED) {
             setPStatus( getPStatus() & ~WEDGED);
 
-            MOND_DEBUG << this->getName() << ": sensor answer, attempt: " << timeouts <<  " time_work: " << milisec(time_end-time_begin) << endl;
+            MONSYS_DEBUG << this->getName() << ": sensor answer, attempt: " << timeouts <<  " time_work: " << milisec(time_end-time_begin) << endl;
             timeouts = 0;
         }  else {
-            MOND_DEBUG << this->getName() << " attempt: " << timeouts <<  " time_work: " << milisec(time_end-time_begin) << endl;
+            MONSYS_DEBUG << this->getName() << " attempt: " << timeouts <<  " time_work: " << milisec(time_end-time_begin) << endl;
             }
         SOK();
         msg->post();
@@ -88,13 +88,13 @@ void RTSensor::body()
 
         if ( getPStatus() & WEDGED)  {
             sendWedgedMessage();
-            MOND_DEBUG << "Sensor "<<this->getName()  <<" "
+            MONSYS_DEBUG << "Sensor "<<this->getName()  <<" "
                          << e.what() << endl;
             return;
         }
 
         if ( timeouts < wedgedThreshold) {
-            MOND_DEBUG << this->getName()  << " attempt: "<< timeouts <<" "
+            MONSYS_DEBUG << this->getName()  << " attempt: "<< timeouts <<" "
                          << e.what() << endl;
             return;
         }
@@ -103,7 +103,7 @@ void RTSensor::body()
         sendWedgedMessage();
         setLastReadError( e);
 
-        MOND_DEBUG << this->getName() << ": sensor no answer, attempt:" << timeouts <<" "
+        MONSYS_DEBUG << this->getName() << ": sensor no answer, attempt:" << timeouts <<" "
                      << e.what() << endl;
     }
 }
@@ -176,10 +176,10 @@ void WTSensor::body()
         if ( getPStatus() & WEDGED) {
             setPStatus( getPStatus() & ~WEDGED);
 
-            MOND_DEBUG << this->getName() << ": sensor answer, attempt: " << timeouts <<  " time_work: " << milisec(time_end-time_begin) << endl;
+            MONSYS_DEBUG << this->getName() << ": sensor answer, attempt: " << timeouts <<  " time_work: " << milisec(time_end-time_begin) << endl;
             timeouts = 0;
         }  else {
-            MOND_DEBUG << this->getName() << " attempt: " << timeouts <<  " time_work: " << milisec(time_end-time_begin) << endl;
+            MONSYS_DEBUG << this->getName() << " attempt: " << timeouts <<  " time_work: " << milisec(time_end-time_begin) << endl;
             }
         SOK();
         msg->post();
@@ -190,13 +190,13 @@ void WTSensor::body()
 
         if ( getPStatus() & WEDGED)  {
             sendWedgedMessage();
-            MOND_DEBUG << "Sensor "<<this->getName()  << " sensor no answer, attempt: "<< timeouts <<" "
+            MONSYS_DEBUG << "Sensor "<<this->getName()  << " sensor no answer, attempt: "<< timeouts <<" "
                          << e.what() << endl;
             return;
         }
 
         if ( timeouts < wedgedThreshold) {
-            MOND_DEBUG << this->getName()  << " attempt: "<< timeouts <<" "
+            MONSYS_DEBUG << this->getName()  << " attempt: "<< timeouts <<" "
                          << e.what() << endl;
             return;
         }
@@ -205,7 +205,7 @@ void WTSensor::body()
         sendWedgedMessage();
         setLastReadError( e);
 
-        MOND_DEBUG << this->getName() << ": sensor no answer, attempt:" << timeouts <<" "
+        MONSYS_DEBUG << this->getName() << ": sensor no answer, attempt:" << timeouts <<" "
                      << e.what() << endl;
     }
 }

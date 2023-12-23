@@ -177,7 +177,7 @@ AlarmList::~AlarmList()
 void AlarmList::push( unsigned i, Expression<bool>* e)
 {
     alarms.push_back( pair<unsigned, Expression<bool>*>( i, e));
-//   MOND_DEBUG  << "AlarmList::push i:"<< i << endl;
+//   MONSYS_DEBUG  << "AlarmList::push i:"<< i << endl;
 }
 
 unsigned AlarmList::examine()
@@ -187,7 +187,7 @@ unsigned AlarmList::examine()
 // AVN 25.10            return a->first;
 // AVN 25.10        }
     }
-//MOND_DEBUG  << "4 AlarmList::examine: return MAXALARM"<< endl;
+//MONSYS_DEBUG  << "4 AlarmList::examine: return MAXALARM"<< endl;
     return MAXALARM;
 }
 #endif //EXPRESSIONS

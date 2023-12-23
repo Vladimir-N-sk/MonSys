@@ -15,7 +15,7 @@
 
 bool TAFilter::examine( Message* m) throw(runtime_error)
 {
-  MOND_DEBUG << "Filter start param: " << m->getParameterName() << endl;
+  MONSYS_DEBUG << "Filter start param: " << m->getParameterName() << endl;
     Parameter * const pname = m->getSource();
 
     alarm = m->getStatus();
@@ -43,7 +43,7 @@ bool TAFilter::examine( Message* m) throw(runtime_error)
                 if ( nwTime.end() == ti)
                 ti = nwTime.insert( nwTime.begin(), Journal::value_type( pname, m->getTime()));
             }
-MOND_DEBUG << "Filter first time param: " << m->getParameterName() << " alarm:" << alarm<< " time:"<< m->getTime()<<endl;
+MONSYS_DEBUG << "Filter first time param: " << m->getParameterName() << " alarm:" << alarm<< " time:"<< m->getTime()<<endl;
             if ( alarm == ALARM   ) {
                 ti->second = m->getTime()+ writePeriod;
                 return true;
@@ -62,21 +62,21 @@ MOND_DEBUG << "Filter first time param: " << m->getParameterName() << " alarm:" 
         ti->second += writePeriod;
 
         if ( alarm == al->second) {
-MOND_DEBUG << "============Filter  alarm==al->second  param: " << m->getParameterName() <<" alarm:"<< alarm<< " time:" << m->getTime()<<endl;
+MONSYS_DEBUG << "============Filter  alarm==al->second  param: " << m->getParameterName() <<" alarm:"<< alarm<< " time:" << m->getTime()<<endl;
             return false;
         }
 
         if ( (alarm > al->second && al->second == ALARM) ||  alarm == ALARM   ) {
-MOND_DEBUG << "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!Filter  NEW alarm  param: " << m->getParameterName() <<" alarm:"<< alarm<< " al->second:" << al->second<<endl;
+MONSYS_DEBUG << "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!Filter  NEW alarm  param: " << m->getParameterName() <<" alarm:"<< alarm<< " al->second:" << al->second<<endl;
             al->second = alarm;
             return true;
         } else {
-MOND_DEBUG << "#####################Filter  alarm 2->1 param: " << m->getParameterName() <<" alarm:"<< alarm<< " al->second:" << al->second<<endl;
+MONSYS_DEBUG << "#####################Filter  alarm 2->1 param: " << m->getParameterName() <<" alarm:"<< alarm<< " al->second:" << al->second<<endl;
             al->second = alarm;
             return false;
         }
     }
-MOND_DEBUG << "Filter NO time param: " << m->getParameterName() << " time second:" << ti->second<< " time message:"<< m->getTime()<<endl;
+MONSYS_DEBUG << "Filter NO time param: " << m->getParameterName() << " time second:" << ti->second<< " time message:"<< m->getTime()<<endl;
     return false;
 
 //    if ( alarm == ALARM   ||  alarm > SUBALARM   ) {
@@ -84,7 +84,7 @@ MOND_DEBUG << "Filter NO time param: " << m->getParameterName() << " time second
 
 void TAFilter::init()
 {
-    MOND_DEBUG << "Filter start " <<endl;
+    MONSYS_DEBUG << "Filter start " <<endl;
     nwTime_lock.wrlock();
     ScopeGuard nwTime_lock_unlocker  = makeObjGuard( nwTime_lock, &RWLock::unlock);
     nwTime.clear();
@@ -113,7 +113,7 @@ bool TimeThresholdFilter::examine( Message* m) throw(runtime_error)
 
     Journal::iterator ti = mpool.find( pname);
 
-//MOND_DEBUG << " filter param: " << m->getParameterName() << " start"<<endl;
+//MONSYS_DEBUG << " filter param: " << m->getParameterName() << " start"<<endl;
 
     if ( mpool.end() == ti) {
 
@@ -123,7 +123,7 @@ bool TimeThresholdFilter::examine( Message* m) throw(runtime_error)
         ti = mpool.find( pname);
 
         if ( mpool.end() == ti) {
-//MOND_DEBUG << " filter param: " << m->getParameterName() << " if first time insrt to pool and return TRUE "<<endl;
+//MONSYS_DEBUG << " filter param: " << m->getParameterName() << " if first time insrt to pool and return TRUE "<<endl;
             m->incUses();
             mpool.insert( Journal::value_type( pname, PoolNode(m,writePeriod)));
             return true;
@@ -231,20 +231,20 @@ bool ThresholdFilter::examine( Message* m) throw(runtime_error)
 
     Journal::iterator ti = mpool.find( pname);
 
-//MOND_DEBUG << " filter param: " << m->getParameterName() << " start"<<endl;
+//MONSYS_DEBUG << " filter param: " << m->getParameterName() << " start"<<endl;
 
     if ( mpool.end() == ti) {
 // ��� ������ ���������
-//MOND_DEBUG << " filter param: " << m->getParameterName() << " this first message "<<endl;
+//MONSYS_DEBUG << " filter param: " << m->getParameterName() << " this first message "<<endl;
         mpool_lock.unlock();
         mpool_lock.wrlock();
 
         ti = mpool.find( pname);
 
-//MOND_DEBUG << " filter param: " << m->getParameterName() << " again set  ti"<<endl;
+//MONSYS_DEBUG << " filter param: " << m->getParameterName() << " again set  ti"<<endl;
 
         if ( mpool.end() == ti) {
-//MOND_DEBUG << " filter param: " << m->getParameterName() << " if first time insrt to pool and return TRUE "<<endl;
+//MONSYS_DEBUG << " filter param: " << m->getParameterName() << " if first time insrt to pool and return TRUE "<<endl;
             m->incUses();
             mpool.insert( Journal::value_type( pname, PoolNode(m)));
             return true;
@@ -253,26 +253,26 @@ bool ThresholdFilter::examine( Message* m) throw(runtime_error)
 
 
 
-//MOND_DEBUG << "1 filter param: " << m->getParameterName() << " ti->second.base_msg->getTime():"<< ti->second.base_msg->getTime()<< " m->getTime():"<< m->getTime()<<endl;
+//MONSYS_DEBUG << "1 filter param: " << m->getParameterName() << " ti->second.base_msg->getTime():"<< ti->second.base_msg->getTime()<< " m->getTime():"<< m->getTime()<<endl;
     //TODO late messages statistic gathering need
     if ( ti->second.base_msg->getTime() > m->getTime()) return true;
-//MOND_DEBUG << "1 filter param: " << m->getParameterName() << " ti->second.base_msg->getTime():"<< ti->second.base_msg->getTime()<< " m->getTime():"<< m->getTime()<<endl;
+//MONSYS_DEBUG << "1 filter param: " << m->getParameterName() << " ti->second.base_msg->getTime():"<< ti->second.base_msg->getTime()<< " m->getTime():"<< m->getTime()<<endl;
 
 
     if ( *ti->second.base_msg == *m) {
-//MOND_DEBUG << "2 filter param: " << m->getParameterName() << " ti->second.last_msg_time:"<< ti->second.last_msg_time<< " m->getTime():"<< m->getTime() <<endl;
+//MONSYS_DEBUG << "2 filter param: " << m->getParameterName() << " ti->second.last_msg_time:"<< ti->second.last_msg_time<< " m->getTime():"<< m->getTime() <<endl;
         ti->second.last_msg_time =  max( ti->second.last_msg_time, m->getTime());
-//MOND_DEBUG << "3 filter param: " << m->getParameterName() << " ti->second.last_msg_time:"<< ti->second.last_msg_time<< " m->getTime():"<< m->getTime() << " return FALSE"<<endl;
-//MOND_DEBUG << "6 filter param: " << m->getParameterName() << " return false" <<endl;
+//MONSYS_DEBUG << "3 filter param: " << m->getParameterName() << " ti->second.last_msg_time:"<< ti->second.last_msg_time<< " m->getTime():"<< m->getTime() << " return FALSE"<<endl;
+//MONSYS_DEBUG << "6 filter param: " << m->getParameterName() << " return false" <<endl;
 
         return false;
     }
 
-//MOND_DEBUG << "4 filter param: " << m->getParameterName() << " ti->second.last_msg_time:"<< ti->second.last_msg_time<< " m->getTime():"<< m->getTime() <<endl;
+//MONSYS_DEBUG << "4 filter param: " << m->getParameterName() << " ti->second.last_msg_time:"<< ti->second.last_msg_time<< " m->getTime():"<< m->getTime() <<endl;
     //TODO late messages statistic gathering need
     //XXX this case violates db structure
     if ( ti->second.last_msg_time > m->getTime()) return true;
-//MOND_DEBUG << "5 filter param: " << m->getParameterName() << " ti->second.last_msg_time:"<< ti->second.last_msg_time<< " m->getTime():"<< m->getTime() <<endl;
+//MONSYS_DEBUG << "5 filter param: " << m->getParameterName() << " ti->second.last_msg_time:"<< ti->second.last_msg_time<< " m->getTime():"<< m->getTime() <<endl;
 
 
 
@@ -281,7 +281,7 @@ bool ThresholdFilter::examine( Message* m) throw(runtime_error)
               && !(ti->second.base_msg->getStatus() & WEDGED)
               && !(m->getStatus() & WEDGED)) {
         // repeat base message with last message time for adeqate graphs
-MOND_DEBUG << " filter param: " << m->getParameterName() << " 8"<<endl;
+MONSYS_DEBUG << " filter param: " << m->getParameterName() << " 8"<<endl;
         Message * const fm =
            new Message( ti->second.base_msg, ti->second.last_msg_time);
 
@@ -294,7 +294,7 @@ MOND_DEBUG << " filter param: " << m->getParameterName() << " 8"<<endl;
     ti->second.base_msg->decUses();
     m->incUses();
     ti->second = PoolNode(m);
-//MOND_DEBUG << "6 filter param: " << m->getParameterName() << " write msg to pool and return TRUE" <<endl;
+//MONSYS_DEBUG << "6 filter param: " << m->getParameterName() << " write msg to pool and return TRUE" <<endl;
     return true;
 }
 

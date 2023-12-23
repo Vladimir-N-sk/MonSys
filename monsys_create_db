@@ -1,0 +1,28 @@
+#!/bin/sh 
+
+DB=monsys
+USER=postgres
+PG_PATH=/usr
+
+$PG_PATH/bin/createdb -U $USER $DB
+
+$PG_PATH/bin/psql -U $USER -d $DB -c "create table sname (id serial primary key,name text unique)"
+$PG_PATH/bin/psql -U $USER -d $DB -c "create table svalue (id integer not null, value text, time timestamp,alarm smallint)"
+$PG_PATH/bin/psql -U $USER -d $DB -c "create table sdesc (id integer not null,description text, measure text, type smallint)"
+$PG_PATH/bin/psql -U $USER -d $DB -c "create table sost (id integer not null, value text, time timestamp,alarm smallint)"
+
+$PG_PATH/bin/psql -U $USER -d $DB -c "ALTER TABLE svalue ADD CONSTRAINT id_fk FOREIGN KEY (id) REFERENCES sname(id)"
+$PG_PATH/bin/psql -U $USER -d $DB -c "ALTER TABLE sdesc  ADD CONSTRAINT id_fk2 FOREIGN KEY (id) REFERENCES sname(id)"
+$PG_PATH/bin/psql -U $USER -d $DB -c "ALTER TABLE sost   ADD CONSTRAINT id_fk3 FOREIGN KEY (id) REFERENCES sname(id)"
+
+$PG_PATH/bin/psql -U $USER -d $DB -c "CREATE INDEX id_idx  ON svalue (id)"
+$PG_PATH/bin/psql -U $USER -d $DB -c "CREATE INDEX time_idx  ON svalue (time)"
+$PG_PATH/bin/psql -U $USER -d $DB -c "CREATE INDEX id_time_idx  ON svalue (id, time)"
+$PG_PATH/bin/psql -U $USER -d $DB -c "CREATE INDEX alarm_idx  ON svalue (alarm)"
+
+$PG_PATH/bin/psql -U $USER -d $DB -c "CREATE INDEX type_sdesc_idx  ON sdesc (type)"
+$PG_PATH/bin/psql -U $USER -d $DB -c "CREATE INDEX id_sdesc_idx  ON sdesc (id)"
+
+$PG_PATH/bin/psql -U $USER -d $DB -c "CREATE INDEX id_sost_idx  ON sost (id)"
+$PG_PATH/bin/psql -U $USER -d $DB -c "CREATE INDEX alarm_time_sost_idx  ON sost (alarm,time)"
+$PG_PATH/bin/psql -U $USER -d $DB -c "CREATE INDEX alarm_id_sost_idx  ON sost (alarm,id)"

@@ -1,1 +1,1 @@
-/usr/bin/g++  -Os -DNDEBUG  -rdynamic CMakeFiles/monsys.dir/monsys.cc.o  -o monsys -Wl,-rpath,/usr/local/lib liblib-mon.a -lpthread -lpq /usr/local/lib/libnetsnmp.so 
+/usr/bin/g++  -g  -rdynamic CMakeFiles/monsys.dir/monsys.cc.o  -o monsys -Wl,-rpath,/usr/local/lib liblib-mon.a -lpthread -lpq /usr/local/lib/libnetsnmp.so 

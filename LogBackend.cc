@@ -17,7 +17,7 @@ LogBackend::LogBackend( const string& fName)
 {
     file.open( fName.c_str(), ios::out|ios::app);
     if( !file) throw string(errmsg+fName.c_str());
-    MOND_DEBUG << "log to: " << fName << endl;
+    MONSYS_DEBUG << "log to: " << fName << endl;
 }
 
 LogBackend::~LogBackend()
