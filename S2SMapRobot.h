@@ -1,4 +1,3 @@
-//  $Id: S2SMapRobot.h,v 1.4 2002/01/21 05:57:55 denis Exp $
 
 #ifndef S2SMapRobot_h
 #define S2SMapRobot_h

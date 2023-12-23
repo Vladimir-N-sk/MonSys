@@ -1,4 +1,4 @@
-// $Id: MessagePool.h,v 1.4 2002/01/23 09:54:55 denis Exp $
+
 #ifndef MessagePool_h
 #define MessagePool_h
 

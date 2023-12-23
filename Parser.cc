@@ -475,7 +475,7 @@ char *yytext;
 ////#line 1 "Parser.l"
 ////#line 6 "Parser.l"
 
-// $Id: Parser.l,v 1.16 2002/12/16 05:48:58 denis Exp $
+
 
 
     #include "common.h"

@@ -1,4 +1,3 @@
-//  $Id: Message.h,v 1.47 2003/01/09 11:32:17 denis Exp $
 
 #ifndef Message_h
 #define Message_h

@@ -1,4 +1,4 @@
-//  $Id: S2SMapRobot.cc,v 1.10 2002/09/11 06:18:53 denis Exp $
+
 
 #include "common.h"
 #include "globals.h"

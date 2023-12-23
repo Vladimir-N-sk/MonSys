@@ -1,6 +1,4 @@
-//  $Id: MessageBuffer.cc,v 1.15 2002/10/21 10:04:59 denis Exp $
 
-//buggy piece of code
 #include "common.h"
 #include "globals.h"
 

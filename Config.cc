@@ -1,4 +1,3 @@
-//  $Id: Config.cc,v 1.21 2002/11/21 05:18:55 denis Exp $
 
 #include "common.h"
 #include "globals.h"

@@ -65,7 +65,7 @@
 #line 9 "Parser.y" /* yacc.c:339  */
 
 
-// $Id: Parser.y,v 1.5 2002/12/16 05:48:58 denis Exp $
+
 
 #ifdef EXPRESSIONS
 

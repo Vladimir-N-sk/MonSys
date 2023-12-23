@@ -38,7 +38,10 @@
 #include "S2SMapRobot.h"
 #include "LogBackend.h"
 #include "AlarmBoolRobot.h"
-#include "PGBackend.h"
+
+#ifdef PSQL
+    #include "PGBackend.h"
+#endif
 
 #include "Dispatcher.h"
 
@@ -368,6 +371,7 @@ Runable* Dispatcher::makeBackend( const string& name)
     string type = c[name][TYPE];
     Backend* b = NULL;
 
+#ifdef PSQL
         if ( NULL == b && type == "PGLBackend") {
         b = new PGLBackend( config[name]["init"]);
 
@@ -393,7 +397,7 @@ Runable* Dispatcher::makeBackend( const string& name)
                 static_cast<PGLBackend*>(b)->addFilter(f);
         }
     }
-
+#endif
 
         if ( type == "LogBackend") {
         b = new LogBackend( c[name]["file"]);

@@ -1,4 +1,3 @@
-//  $Id: MessageQueue.cc,v 1.12 2002/10/23 06:37:19 denis Exp $
 
 #include "common.h"
 #include "globals.h"

@@ -1,7 +1,3 @@
-// $Id: ScopeGuard.h,v 1.1 2002/12/17 12:55:21 denis Exp $
-//
-// source is http://www.cuj.com/experts/1812/alexandr.htm?topic%3Dexperts
-//
 
 #ifndef ScopeGuard_h
 #define ScopeGuard_h

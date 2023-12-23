@@ -1,4 +1,3 @@
-//  $Id: Network.cc,v 1.16 2003/01/09 04:10:15 denis Exp $
 
 #include "common.h"
 #include "globals.h"

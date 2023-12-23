@@ -1,4 +1,3 @@
-// $Id: Filtered.cc,v 1.8 2003/05/05 04:48:35 denis Exp $
 
 #include "common.h"
 #include "globals.h"
@@ -235,7 +234,7 @@ bool ThresholdFilter::examine( Message* m) throw(runtime_error)
 //MOND_DEBUG << " filter param: " << m->getParameterName() << " start"<<endl;
 
     if ( mpool.end() == ti) {
-// Это первое сообщение
+// О©╫О©╫О©╫ О©╫О©╫О©╫О©╫О©╫О©╫ О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫
 //MOND_DEBUG << " filter param: " << m->getParameterName() << " this first message "<<endl;
         mpool_lock.unlock();
         mpool_lock.wrlock();
@@ -277,7 +276,7 @@ bool ThresholdFilter::examine( Message* m) throw(runtime_error)
 
 
 
-/* AVN 02/09/2017 дает задвоение записи даных в БД
+/* AVN 02/09/2017 О©╫О©╫О©╫О©╫ О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫ О©╫О©╫О©╫О©╫О©╫О©╫ О©╫О©╫О©╫О©╫О©╫ О©╫ О©╫О©╫
     if ( ti->second.base_msg->getTime() != ti->second.last_msg_time
               && !(ti->second.base_msg->getStatus() & WEDGED)
               && !(m->getStatus() & WEDGED)) {

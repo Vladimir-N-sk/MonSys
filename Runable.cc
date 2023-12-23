@@ -1,4 +1,3 @@
-//  $Id: Runable.cc,v 1.20 2003/02/21 06:34:49 denis Exp $
 
 #include "common.h"
 #include "globals.h"
@@ -47,13 +46,9 @@ void* Runable::wrapper( void* obj) throw()
     for (;;) {
        Runable::wrapper1( obj);
 
-//AVN 18.02.2010       MOND_ERROR << "sleep for minute" << endl;
        const timespec minute = { 60, 60};
        nanosleep( minute); //XXX
-
        MOND_ERROR << "trynig to restart" << endl;
-//MOND_DEBUG << this->getName() << "trynig to restart" << n <<endl;
-//       exit(-1);
     }
     return NULL;
 }

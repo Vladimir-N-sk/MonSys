@@ -1,4 +1,3 @@
-//  $Id: Sensor.cc,v 1.44 2003/01/08 11:25:27 denis Exp $
 
 #include "common.h"
 #include "globals.h"
@@ -50,18 +49,8 @@ void RTSensor::thread()
      if (timeouts < 5) {
             remains = remains * (timeouts-1);
         } else remains *= 5;
-
-//        remains += timeout;
     }
 
-/*    if ( remains > ZEROTIME) {
-      nanosleep( remains);
-    }
-    else {
-    	if ( sched_yield()) throw runtime_error( error());
-    }
-*/
-// origin code
     if ( remains > ZEROTIME) nanosleep( remains);
     else if ( sched_yield()) throw runtime_error( error());
 
@@ -119,24 +108,6 @@ void RTSensor::body()
     }
 }
 
-/* перенес в Sensor.h
-Sensor::~Sensor()
-{
-}
-
-RTSensor::~RTSensor()
-{
-}
-
-MBSensor::~MBSensor()
-{
-}
-
-WTSensor::~WTSensor()
-{
-}
-*/
-
 MBSensor::MBSensor( const string& n, const Address& a, Network* q)
  : Sensor(n, a, q)
 {
@@ -183,29 +154,13 @@ void WTSensor::thread()
 
     if ( getPStatus() & WEDGED) {
 
-/* 20/09/17
-    if (timeouts < 5) {
-            remains = remains * (timeouts-1);
-        } else remains *= 5;
-*/
-// 20/09/17 ������� � ����.����
         remains += timeout;
     }
 
-/*    if ( remains > ZEROTIME) {
-      nanosleep( remains);
-    }
-    else {
-        if ( sched_yield()) throw runtime_error( error());
-    }
-*/
-// origin code
     if ( remains > ZEROTIME) nanosleep( remains);
     else if ( sched_yield()) throw runtime_error( error());
 
 }
-
-
 
 void WTSensor::body()
 {
@@ -215,8 +170,6 @@ void WTSensor::body()
     timespec time_begin=now();
     Message * const msg = getSensorData();
     timespec time_end=now();
-
-//        timeouts = 0;
 
     if (timeouts > 0) timeouts -= 1;
 
@@ -235,8 +188,6 @@ void WTSensor::body()
 
         timeouts = ( 0 != timeouts + 1) ? timeouts + 1 : timeouts;
 
-//    if (timeouts > 5)  timeouts =5;
-
         if ( getPStatus() & WEDGED)  {
             sendWedgedMessage();
             MOND_DEBUG << "Sensor "<<this->getName()  << " sensor no answer, attempt: "<< timeouts <<" "
@@ -249,7 +200,6 @@ void WTSensor::body()
                          << e.what() << endl;
             return;
         }
-
 
         setPStatus( getPStatus() | WEDGED);
         sendWedgedMessage();

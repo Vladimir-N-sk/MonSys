@@ -1,12 +1,9 @@
-//  $Id: utils.cc,v 1.18 2003/02/15 12:00:17 denis Exp $
 
 
 #include "common.h"
 #include "globals.h"
 #include "utils.h"
 #include "Time.h"
-
-
 
 string delspace( const string& s)
 {

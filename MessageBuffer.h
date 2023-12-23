@@ -1,4 +1,3 @@
-//  $Id: MessageBuffer.h,v 1.8 2002/10/21 10:04:59 denis Exp $
 
 #ifndef MessageBuffer_h
 #define MessageBuffer_h

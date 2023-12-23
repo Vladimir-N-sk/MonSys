@@ -1,4 +1,3 @@
-// $Id: Filtered.h,v 1.8 2003/05/05 04:48:44 denis Exp $
 
 #ifndef Filtered_h
 #define Filtered_h

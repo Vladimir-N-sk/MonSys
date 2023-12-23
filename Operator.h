@@ -1,4 +1,3 @@
-//  $Id: Operator.h,v 1.4 2002/12/16 05:48:57 denis Exp $
 
 #ifndef Operator_h
 #define Operator_h

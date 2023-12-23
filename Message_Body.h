@@ -1,4 +1,3 @@
-//  $Id: Message_Body.h,v 1.19 2002/04/05 05:55:36 denis Exp $
 
 #ifndef Message_Body_h
 #define Message_Body_h

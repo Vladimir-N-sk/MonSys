@@ -1,4 +1,3 @@
-//  $Id: Resource.cc,v 1.13 2002/05/18 07:49:51 denis Exp $
 
 #include "common.h"
 #include "globals.h"

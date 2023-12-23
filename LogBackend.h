@@ -1,4 +1,4 @@
-//  $Id: LogBackend.h,v 1.7 2002/02/14 09:42:01 denis Exp $
+
 
 #ifndef LogBackend_h
 #define LogBackend_h

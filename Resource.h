@@ -1,4 +1,4 @@
-//  $Id: Resource.h,v 1.9 2002/12/10 09:17:15 denis Exp $
+
 
 #ifndef Resource_h
 #define Resource_h

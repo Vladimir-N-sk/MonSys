@@ -1,4 +1,3 @@
-//  $Id: Logger.cc,v 1.12 2002/04/30 09:40:17 denis Exp $
 
 #include "common.h"
 

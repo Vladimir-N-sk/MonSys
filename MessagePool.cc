@@ -1,4 +1,3 @@
-// $Id: MessagePool.cc,v 1.8 2002/10/23 05:04:52 denis Exp $
 
 #include "common.h"
 #include "globals.h"

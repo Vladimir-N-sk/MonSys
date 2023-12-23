@@ -1,4 +1,6 @@
 
+#ifdef PSQL
+
 #ifndef PGBackend_h
 #define PGBackend_h
 
@@ -55,4 +57,5 @@ private:
     PGresult   *res;
 };
 
+#endif
 #endif

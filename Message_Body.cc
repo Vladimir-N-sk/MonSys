@@ -1,4 +1,3 @@
-//  $Id: Message_Body.cc,v 1.17 2002/12/16 06:15:59 denis Exp $
 
 #include "common.h"
 #include "globals.h"

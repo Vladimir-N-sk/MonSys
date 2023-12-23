@@ -43,8 +43,21 @@ add_library ( lib-mon STATIC
     utils.cc    
     )
 
-target_compile_definitions(lib-mon PUBLIC EXPRESSIONS )    
-target_compile_definitions(monsys  PUBLIC EXPRESSIONS )
+#add_library(lib_snmp STATIC IMPORTED)
+#set_property(TARGET lib_snmp PROPERTY
+#                 IMPORTED_LOCATION /usr/local/lib/libnetsnmp.a)
+
+#add_library(lib_psql STATIC IMPORTED)
+#set_property(TARGET lib_psql PROPERTY
+#                                  IMPORTED_LOCATION /usr/lib/x86_64-linux-gnu/libpq.a)
+                 
+
+#target_compile_definitions(lib-mon PUBLIC EXPRESSIONS )    
+#target_compile_definitions(monsys  PUBLIC EXPRESSIONS )
+
+target_compile_definitions(lib-mon PUBLIC EXPRESSIONS PSQL)    
+target_compile_definitions(monsys  PUBLIC EXPRESSIONS PSQL)
+
 
 target_compile_options(lib-mon PUBLIC
     -pthread -fPIC -Wno-deprecated     
@@ -54,8 +67,14 @@ target_compile_options(monsys PUBLIC
     -pthread -fPIC -Wno-deprecated 
 )
 
+
+#Set Linker flags
+#set(CMAKE_EXE_LINKER_FLAGS "-static-libgcc -static-libstdc++")
+
 target_link_libraries(monsys 
 lib-mon 
+#lib_snmp
+#lib_psql
 -lpthread
 /usr/lib/x86_64-linux-gnu/libpq.so
 /usr/local/lib/libnetsnmp.so
