@@ -1,8 +1,3 @@
-/* 28/04/2015 for Tomsk monsys_509
-    msg->setAlarm( alarm);
-    �� ������������� �������� alarm �� RPCSensor
-*/
-
 
 #include "common.h"
 #include "globals.h"

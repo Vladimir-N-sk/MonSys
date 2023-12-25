@@ -107,18 +107,18 @@ void Timeticks2TimeStringRobot::automat(Message* m)
     }
 
     try {
-         int tt = m->getIntValue();
-         int day = tt/8640000;
-         int hour =  (tt - day*8640000)/360000;
-         int minute = (tt - day*8640000 - hour*360000)/6000;         
-         int seconds = tt/100 - day*86400 - hour*3600 - minute*60;         
+         double tt = m->getDoubleValue();
+         int day = tt/86400;
+         int hour =  (tt - day*86400)/3600;
+         int minute = (tt - day*86400 - hour*3600)/60;         
+         int seconds = tt - day*86400 - hour*3600 - minute*60;         
 
          string str = int2str(day)+" days "+int2str(hour,2,'0')+":"+int2str(minute,2,'0')+":"+int2str(seconds,2,'0');
           
             Message * const n = new Message(this, str);
             n->setAlarm( m->getAlarm());
             n->post();
-MONSYS_DEBUG << this->getName()<< ":" << str <<endl;
+MONSYS_DEBUG << this->getName()<< ":("<<int2str(tt) << ") "<<str <<endl;
     }
     catch ( Message::empty& e) {
       Message * const n = new Message(this);

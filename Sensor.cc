@@ -31,15 +31,13 @@ void RTSensor::thread()
     if ( firstTimeRun) {           // slow start
 
         firstTimeRun = false;
+//AVN 25/12/2023 for debug
         nanosleep( (delay + timeout) * 2 * drand48());
     }
 
     timespec remains = now();
 
-
-    body();//XXX bad name
-
-
+    body();
 
     remains += delay - now();
 

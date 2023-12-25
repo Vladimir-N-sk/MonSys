@@ -30,37 +30,24 @@ Message* SNMPSensor::getSensorData() throw (exception)
 #endif
         for (vars = response->variables; vars; vars = vars->next_variable) {
             int counter=1;
-            MONSYS_DEBUG << "vars->type == " << uns2hex(vars->type, 2) << endl;
+            MONSYS_DEBUG << "SNMP-answer-type (hex) == " << uns2hex(vars->type, 2) << endl;
             switch (vars->type) {
             case ASN_OCTET_STR: {
                 const string tmps( reinterpret_cast<char*>(vars->val.string),
                                                               vars->val_len);
                 Message *msg;
-
-#ifndef PLAINSNMP
-            MONSYS_DEBUG <<this->getName()<< " SNMPSensor ASN_OCTET_STR_1:" << tmps <<" type:"<< getProperties()->type<<endl;
-                if ( '#' == tmps[0]) //XXX
-					msg = Message::unserialize( this, tmps.substr(1));
-                else  if ( 1 == getProperties()->type )
-                    msg = new Message( this, dec2<double>( tmps));
-                else
-                    msg = new Message( this, tmps);
-#else
-            MONSYS_DEBUG <<this->getName()<< " SNMPSensor ASN_OCTET_STR_2:" << tmps <<" type:"<< getProperties()->type<<endl;
-                if ( 1 == getProperties()->type )
-                    msg = new Message( this, dec2<double>( tmps));
-                else
-                    msg = new Message( this, tmps);
-#endif
+                msg = new Message( this, tmps);
+      MONSYS_DEBUG <<this->getName()<< " SNMPSensor ASN_OCTET_STR:" << tmps <<endl;
                 snmp_free_pdu( response);
                 return msg;
             }
             case ASN_GAUGE:
-			 case ASN_TIMETICKS:
+			case ASN_TIMETICKS:
             case ASN_INTEGER:
             case ASN_COUNTER: {
+
                 Message *msg = new Message( this, *vars->val.integer);
-//            MONSYS_DEBUG <<this->getName()<< " SNMPSensor ASN_COUNTER:" << *vars->val.integer << endl;
+            MONSYS_DEBUG <<this->getName()<< " SNMPSensor ASN_COUNTER:" << *vars->val.integer << endl;
                 snmp_free_pdu( response);
                 return msg;
             }
