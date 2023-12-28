@@ -100,6 +100,7 @@ private:
     RWLock nwTime_lock;
 };
 
+/*
 class AlarmFilter
  : public Filter {
 public:
@@ -112,6 +113,7 @@ private:
     const Parameter *const alarmer;
     unsigned alarm;
 };
+*/
 
 class ThresholdFilter
  : public Filter {

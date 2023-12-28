@@ -69,10 +69,6 @@ void PGLBackend::thread()
                 initFilters();
                 break;
             }
-      /**
-       *  write msg into db or push the rest of buffer
-       *  and close db in case of resuming after db failure
-       */
             if ( NULL != msg) {
                 write( msg);
                 msg->decUses();
@@ -165,6 +161,8 @@ void PGLBackend::write( Message* msg) throw( PGLBackend::DBError, Message::empty
     res = PQexec(conn, q.c_str());
     if (PQresultStatus(res) != PGRES_COMMAND_OK) throw DBError( msg->getParameterName() +" : "+q);
 
+MONSYS_DEBUG << "PGLBakend write text: "<<msg->getTextValue()<< " at time:" << msg->getTextTime()<< endl;
+
     if ( getIDsost(id) == "" ) {
 	    q = "INSERT INTO sost(id,alarm) VALUES ("
 		  + id
@@ -185,6 +183,7 @@ void PGLBackend::write( Message* msg) throw( PGLBackend::DBError, Message::empty
     PQclear(res);
     res = PQexec(conn, q.c_str());
     if (PQresultStatus(res) != PGRES_COMMAND_OK) throw DBError( q);
+
 }
 
 void PGLBackend::updDesc( Parameter* p, const string& id)
@@ -207,7 +206,6 @@ void PGLBackend::updDesc( Parameter* p, const string& id)
                 + ",\'" + p->getProperties()->desc + "\'"
                 + ",\'" + p->getProperties()->measure + "\'"
                 + "," + nt.str()
-
                 + ");";
 
     PQclear(res);
@@ -218,9 +216,13 @@ void PGLBackend::updDesc( Parameter* p, const string& id)
 
 if ( PQgetvalue(res, 0, 0)  != p->getProperties()->desc ) {
 
+    stringstream nt;
+    nt << p->getProperties()->type;
+
    q =
   "UPDATE sdesc SET description= \'" + p->getProperties()->desc
    + "\', measure= \'"     + p->getProperties()->measure
+   + "\', type= \'" + nt.str()
    + "\' WHERE id = "  + id  + ";";
 
     PQclear(res);
@@ -234,7 +236,6 @@ if ( PQgetvalue(res, 0, 0)  != p->getProperties()->desc ) {
 string PGLBackend::addParameter( Parameter* p)
                                 throw( PGLBackend::DBError)
 {
-
     string q =
       "INSERT INTO sname(name) VALUES (\'" + p->getName() + "\');";
 
@@ -266,7 +267,6 @@ string PGLBackend::addParameter( Parameter* p)
     res = PQexec(conn, q.c_str());
     if (PQresultStatus(res) != PGRES_COMMAND_OK) throw DBError(p->getName()+": "+ q);
     return id;
-
 }
 string PGLBackend::getIDsost( const string& id) throw( PGLBackend::DBError)
 {

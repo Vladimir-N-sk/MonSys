@@ -389,10 +389,10 @@ Runable* Dispatcher::makeBackend( const string& name)
 
             if ( fn == "TimeFilter")
                 f = new TimeFilter( read_timespec(config[name]["period"]));
-
+/* 28.12.2023 old version
             if ( fn == "AlarmFilter")
                 f = new AlarmFilter( Parameter::get( config[name]["semaphore"]));
-
+*/
             if ( NULL != f)
                 static_cast<PGLBackend*>(b)->addFilter(f);
         }
@@ -415,9 +415,10 @@ Runable* Dispatcher::makeBackend( const string& name)
 
             if ( fn == "TimeFilter")
                 f = new TimeFilter( read_timespec(config[name]["period"]));
-
+/* 28.12.2023 old version
             if ( fn == "AlarmFilter")
                 f = new AlarmFilter( Parameter::get( config[name]["semaphore"]));
+*/                
             if ( NULL != f)
                  static_cast<LogBackend*>(b)->addFilter(f);
         }

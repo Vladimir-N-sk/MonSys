@@ -192,7 +192,6 @@ ostream& operator<<( ostream& f, const timespec& t)
 
 istream& operator>>( istream& f, timespec& t)
 {
-    MONSYS_DEBUG << "operator utils str 198 " <<endl;
     tm localTime;
     unsigned i; char c;
 
@@ -314,10 +313,6 @@ signal(SIGCHLD, sig_chld);
     if ( -1 == setsid())
         throw runtime_error( "setsid: " + error());
 
-//    rlimit film;
-//    if ( 0 != getrlimit(RLIMIT_NOFILE, &film))
-//        throw runtime_error( "getrlimit: " + error());
-
 //    for ( unsigned fd=0; fd < film.rlim_max; fd++)
     for ( unsigned fd=0; fd < 3; fd++)
         close(fd);
@@ -370,18 +365,13 @@ timespec read_timespec( const string& s)
     return t;
 }
 
-//timespec now() throw (runtime_error)
 timespec now()
 {
     timespec t;
     if ( clock_gettime( CLOCK_REALTIME, &t))
         throw runtime_error( "clock_gettime: " + error());
-// Sometimes Solaris_x86 clock gives wrong time
-// It can be concerned to xntpd or powersaving mode or hardware error
-// 31536000 sec == 1 year
     if ( t.tv_sec < 31536000)
         throw runtime_error( "clock are broken: " + timespec2isotime( t));
-//    MONSYS_DEBUG << "now(): "<< t << endl;
     return t;
 }
 

@@ -25,13 +25,11 @@ int Loggerbuf::sync()
         opend = true;
     }
 
-if (level != LOG_WARNING) {
+//if (level != LOG_WARNING) {
     syslog( level, "%s", str().data());
-} else {
-      syslog( LOG_WARNING|LOG_LOCAL3, "%s", str().data());
-};
-
-
+//} else {
+//      syslog( LOG_WARNING, "%s", str().data());
+//};
     str("");
     return 0;
 }

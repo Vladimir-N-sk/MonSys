@@ -80,7 +80,6 @@ const Config::Properties& Config::operator[]( const string& oname) const
 
 list< string> Config::objects() const
 {
-MONSYS_DEBUG << "!5 Call list< string> Config::objects()" <<endl;
     list< string> l;
     for ( Objects::const_iterator b = prop.begin(); b != prop.end(); ++b)
         l.push_back( b->first);

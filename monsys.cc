@@ -142,10 +142,10 @@ void printHelp()
     cout << "Mon[itoring] Sys[tem], ver 1.0, github.com/Vladimir-N-sk/MonSys" << endl;
     cout << "usage: monsys [-c <file>] [-d] [-l] [-u <user>]" << endl;
     cout << "-c <file>: use config <file>" << endl;
-   cout << "-t: test config <file>" << endl;
+    cout << "-t: test config <file>" << endl;
     cout << "-d: daemon mode" << endl;
-    cout << "-l: set use syslog user.debug" << endl;
-	cout << "-w: set use syslog user.warning" << endl;
+    cout << "-l: set use syslog for debug" << endl;
+	cout << "-e: set use syslog for warnings and errors" << endl;
     cout << "-u <user>: run by <user>" << endl;
     cout << "-v: output version" << endl;
 
@@ -166,7 +166,7 @@ void startup( int argc, char** argv)
     string config;
     string uname;
     int c;
-    while ( (c = getopt(argc, argv, "du:c:lwvt")) != EOF) {
+    while ( (c = getopt(argc, argv, "du:c:levt")) != EOF) {
         switch(c) {
         case 't':
             test = true;
@@ -183,7 +183,7 @@ void startup( int argc, char** argv)
         case 'l':
             syslog = true;
             break;
-        case 'w':
+        case 'e':
             warning = true;
             break;
         case 'v':
@@ -198,12 +198,12 @@ void startup( int argc, char** argv)
 
     if ( syslog) {
         cerror_log = new Logger( LOG_ERR);
-//        cwarning_log = new Logger( LOG_WARNING);
+        cwarning_log = new Logger( LOG_WARNING);
         cdebug_log = new Logger( LOG_DEBUG);
     }
 
     if ( warning) {
-//        cerror_log = new Logger( LOG_ERR);
+        cerror_log = new Logger( LOG_ERR);
         cwarning_log = new Logger( LOG_WARNING);
 //        cdebug_log = new Logger( LOG_DEBUG);
     }
