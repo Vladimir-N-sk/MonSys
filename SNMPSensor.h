@@ -1,3 +1,4 @@
+#ifdef NETSNMP
 
 #ifndef SNMPSensor_h
 #define SNMPSensor_h
@@ -37,5 +38,7 @@ private:
     oid anOID[MAX_OID_LEN];
     size_t anOID_len;
 };
+
+#endif
 
 #endif

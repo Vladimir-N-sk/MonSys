@@ -1,0 +1,16 @@
+/usr/bin/cmake --build /home/monsys/MonSys/build --config Release --target clean --
+
+/usr/bin/cmake --build /home/monsys/MonSys/build --config Release --target all -- -j 4
+
+
+    либо через командную строку при вызове CMake:
+
+    cmake -DCMAKE_C_COMPILER:STRING="путь/до/компилятора"
+    cmake -DCMAKE_CXX_COMPILER:STRING="путь/до/компилятора"
+
+    либо через модификацию CMakeLists.txt:
+
+    SET(CMAKE_C_COMPILER путь/до/компилятора)
+    SET(CMAKE_CXX_COMPILER путь/до/компилятора)
+
+

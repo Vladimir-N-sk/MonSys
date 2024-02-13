@@ -1,3 +1,4 @@
+#ifdef NETSNMP
 
 #include <net-snmp/net-snmp-config.h>
 #include <net-snmp/net-snmp-includes.h>
@@ -117,3 +118,4 @@ SNMPSensor::~SNMPSensor()
     snmp_sess_close(sessp);
 }
 
+#endif

@@ -14,17 +14,13 @@
 #ifdef NETSNMP
     #include "SNMPSensor.h"
     #include "SNMPNetwork.h"
-    #include "SNMPTrapBackend.h"
+//    #include "SNMPTrapBackend.h"
     #undef MAX_NAME_LEN      // buggy net-snmp
-
-    #include "SerialNetwork.h"
-    #include "SocketNetwork.h"
-    #include "SocketServerNetwork.h"
 #endif
 
-#include "SNMPSensor.h"
-#include "SNMPNetwork.h"
-#undef MAX_NAME_LEN      // buggy net-snmp
+//#include "SNMPSensor.h"
+//#include "SNMPNetwork.h"
+//#undef MAX_NAME_LEN      // buggy net-snmp
 
 
 #ifdef EXPRESSIONS
@@ -253,6 +249,7 @@ string addr= "";
 
     Network& net = *networks[ c[name][NET]];
 
+#ifdef NETSNMP
     if ( NULL == s && type == "SNMPSensor") {
 
         string tmp;
@@ -265,13 +262,13 @@ string addr= "";
             MONSYS_DEBUG << "Parametr <" << name <<"> default set SNMP_VERSION = SNMP_VERSION_1" << endl;
         }
 
-
         s = new SNMPSensor( name, addr,
                             &dynamic_cast<SNMPNetwork&>( net),
                             c[name]["host"],
                             c[name]["var"], c[name]["community"], SNMP_VERSION,
           read_timespec(c[name][TIMEOUT]), read_timespec(c[name][DELAY]));
     }
+#endif
 
     if ( NULL == s && type == "RndSensor") {
         s = new RndSensor( name, addr, &net, read_timespec(c[name][DELAY]));
@@ -347,8 +344,10 @@ Runable* Dispatcher::makeNetwork( const string& name)
     string type = config[name][TYPE];
     Network* n = NULL;
 
+#ifdef NETSNMP
     if ( NULL == n && type == "SNMPNetwork")
         n = new SNMPNetwork();
+#endif
 
     if ( type == "PseudoNetwork")
         n = new PseudoNetwork();

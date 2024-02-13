@@ -1,3 +1,4 @@
+#ifdef NETSNMP
 
 #ifndef SNMPNetwork_h
 #define SNMPNetwork_h
@@ -15,5 +16,7 @@ public:
 private:
     static bool init;
 };
+
+#endif
 
 #endif

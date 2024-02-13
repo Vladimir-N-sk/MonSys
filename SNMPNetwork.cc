@@ -1,3 +1,4 @@
+#ifdef NETSNMP
 
 #include "common.h"
 #include "globals.h"
@@ -22,3 +23,4 @@ SNMPNetwork::~SNMPNetwork()
 {
 }
 
+#endif

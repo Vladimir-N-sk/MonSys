@@ -1,6 +1,0 @@
-/home/monsys/MonSys/build/CMakeFiles/rebuild_cache.dir
-/home/monsys/MonSys/build/CMakeFiles/edit_cache.dir
-/home/monsys/MonSys/build/CMakeFiles/package_source.dir
-/home/monsys/MonSys/build/CMakeFiles/package.dir
-/home/monsys/MonSys/build/CMakeFiles/monsys.dir
-/home/monsys/MonSys/build/CMakeFiles/lib-mon.dir
