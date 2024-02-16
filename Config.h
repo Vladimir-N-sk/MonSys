@@ -8,7 +8,6 @@
 #include <set>
 
 class Config {
-
 public:
 
     class NoSuchProp

@@ -1,15 +1,12 @@
 #ifndef TIME_H
 #define TIME_H
 
-
 #include <ctime>
 #include <stdexcept>
 #include<iostream>
 
 #include "common.h"
 #include "globals.h"
-
-//using namespace std;
 
 const timespec ZEROTIME = {0,0};
 
@@ -24,7 +21,6 @@ unsigned long long milisec( const timespec&);
 unsigned long long microsec( const timespec&);
 timespec nanosec2timespec( unsigned long long);
 timespec read_timespec( const string&);
-//timespec now() throw ( runtime_error);
 timespec now();
 timespec operator+( const timespec&, const timespec&);
 timespec operator+=( timespec&, const timespec&);
@@ -41,7 +37,6 @@ bool operator<=( const timespec&, const timespec&);
 bool operator==( const timespec&, const timespec&);
 bool operator!=( const timespec&, const timespec&);
 
-//void nanosleep( const timespec&) throw ( runtime_error);
 void nanosleep( const timespec&);
 
 #endif

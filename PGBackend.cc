@@ -161,8 +161,6 @@ void PGLBackend::write( Message* msg) throw( PGLBackend::DBError, Message::empty
     res = PQexec(conn, q.c_str());
     if (PQresultStatus(res) != PGRES_COMMAND_OK) throw DBError( msg->getParameterName() +" : "+q);
 
-MONSYS_DEBUG << "PGLBakend write text: "<<msg->getTextValue()<< " at time:" << msg->getTextTime()<< endl;
-
     if ( getIDsost(id) == "" ) {
 	    q = "INSERT INTO sost(id,alarm) VALUES ("
 		  + id
@@ -337,7 +335,6 @@ bool PGLBackend::isDBClosed() throw( PGLBackend::DBError)
 
 void PGLBackend::close( const timespec& dt) throw( PGLBackend::DBError)
 {
-
 }
 
 #endif

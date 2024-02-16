@@ -7,7 +7,6 @@
 using namespace std;
 
 class Config;
-//class Config::Properties;
 class Sensor;
 class Parameter;
 class Network;

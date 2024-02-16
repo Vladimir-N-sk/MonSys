@@ -125,14 +125,6 @@ double Message::getDoubleValue() throw( Message::empty)
     return body->toDouble();
 }
 
-/*
-long Message::getLongValue() throw( Message::empty)
-{
-    if ( body.get() == NULL) throw Message::empty();
-    return body->toLong();
-}
-*/
-
 bool Message::operator==( Message& rhs) throw (exception)
 {
     Message& lhs = *this;

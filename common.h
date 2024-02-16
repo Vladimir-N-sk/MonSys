@@ -9,8 +9,6 @@ using namespace std;
 #define MONSYS_DEBUG (*cdebug_log)
 
 #define MAXALARM 9
-//#define MAXALARM 5
-//#define MAXALARM 255
 #define ALARM 0
 #define SUBALARM 1
 #define NOALARM 2

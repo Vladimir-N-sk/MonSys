@@ -24,7 +24,6 @@ public:
     virtual void transparent_putMessage( Message*) throw(runtime_error) = 0;
     void filtered_putMessage( Message*) throw(runtime_error);
     void initFilters();
-//    virtual ~ProtoFiltered() noexcept {};
 
 private:
     typedef vector<Filter*> filters_type;
@@ -100,21 +99,6 @@ private:
     RWLock nwTime_lock;
 };
 
-/*
-class AlarmFilter
- : public Filter {
-public:
-    AlarmFilter( const Parameter*);
-    virtual bool examine( Message* msg) throw(runtime_error);
-    virtual ~AlarmFilter() noexcept {};
-private:
-    virtual void init();
-
-    const Parameter *const alarmer;
-    unsigned alarm;
-};
-*/
-
 class ThresholdFilter
  : public Filter {
 public:
@@ -154,7 +138,6 @@ public:
 private:
     virtual void init();
     const timespec writePeriod;
-//    timespec writePeriod;
 
     class PoolNode {
     public:
@@ -173,7 +156,5 @@ private:
 
     ProtoFiltered * const backend;
 };
-
-
 
 #endif

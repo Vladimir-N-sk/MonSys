@@ -48,7 +48,7 @@ long Message::Body<V>::toLong()
     return 0;
 }
 
-// specialization for regarding char* as string -----------
+// -----------
 template <>
 class Message::Body<char*>
  : public Message::BodyBase {

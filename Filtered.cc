@@ -148,8 +148,6 @@ bool TimeThresholdFilter::examine( Message* m) throw(runtime_error)
     }
         ti->second.next_msg_time = m->getTime() + writePeriod ;
 
-    //TODO late messages statistic gathering need
-    //XXX this case violates db structure
     if ( ti->second.last_msg_time > m->getTime()) return true;
     ti->second.base_msg->decUses();
     m->incUses();
@@ -313,39 +311,6 @@ void TimeFilter::init()
                  = makeObjGuard( nwTime_lock, &RWLock::unlock);
     nwTime.clear();
 }
-
-
-/*****************************************************************************************************************
- * Устаревшее 28.12.2023 old version
- * ****************************************************************************************************************/
-/*
-bool AlarmFilter::examine( Message* m) throw(runtime_error)
-{
-    bool ret = false;
-
-    try {
-        if ( alarmer == m->getSource() && alarm != m->getAlarm()) {
-            ret = true;
-            alarm = m->getAlarm();
-        } else if ( ALARM == alarm && SUBALARM == alarm ) ret = true;
-    }
-    catch( Message::empty& e) {
-    }
-
-    return ret;
-}
-
-void AlarmFilter::init()
-{
-    alarm = NOALARM;
-}
-
-AlarmFilter::AlarmFilter( const Parameter* al)
- : alarmer(al),
-   alarm(NOALARM)
-{
-}
-*/
 
 TimeFilter::TimeFilter( const timespec& wp)
  : writePeriod(wp)

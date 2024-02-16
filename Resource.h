@@ -20,7 +20,6 @@ public:
         if ( resource.get() == NULL) { // pthread_once can be used XXX
             mutex.lock();
             if ( resource.get() == NULL)
-//AVN                resource = auto_ptr<const A>( generate( argument));
                 resource = shared_ptr<const A>( generate( argument));                
             mutex.unlock();
         }
@@ -30,11 +29,7 @@ public:
 private:
     Resource();
     Mutex mutex;
-    
-
-//AVN    auto_ptr<const A> resource;
     shared_ptr<const A> resource;
-//    unique_ptr<const A> resource;
     
     B generate;
     C argument;

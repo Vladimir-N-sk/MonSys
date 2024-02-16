@@ -2,7 +2,6 @@
 #include "common.h"
 #include "globals.h"
 #include "utils.h"
-
 #include "Sensor.h"
 #include "Message.h"
 #include "Network.h"
@@ -31,7 +30,6 @@ void RTSensor::thread()
     if ( firstTimeRun) {           // slow start
 
         firstTimeRun = false;
-//AVN 25/12/2023 for debug
         nanosleep( (delay + timeout) * 2 * drand48());
     }
 

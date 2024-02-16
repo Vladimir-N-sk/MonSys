@@ -6,8 +6,6 @@
 
 #include <map>
 
-//using namespace std;
-
 template <typename K, typename D>
 class MTmap {
 

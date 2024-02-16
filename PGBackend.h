@@ -21,7 +21,6 @@
 #include "Message.h"
 #include "Time.h"
 
-
 class Parameter;
 
 class PGLBackend

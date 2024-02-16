@@ -15,13 +15,8 @@
     #include "SNMPSensor.h"
     #include "SNMPNetwork.h"
 //    #include "SNMPTrapBackend.h"
-    #undef MAX_NAME_LEN      // buggy net-snmp
+    #undef MAX_NAME_LEN 
 #endif
-
-//#include "SNMPSensor.h"
-//#include "SNMPNetwork.h"
-//#undef MAX_NAME_LEN      // buggy net-snmp
-
 
 #ifdef EXPRESSIONS
     #include "Expression.h"
@@ -40,7 +35,6 @@
 #endif
 
 #include "Dispatcher.h"
-
 
 const string TIMEOUT = "timeout";
 const string DELAY = "delay";
@@ -138,14 +132,9 @@ void Dispatcher::doConfig() throw ( string, exception)
                     MONSYS_DEBUG << "Backend: " << *p << endl;                    
                     makeBackend(*p)->run();                  
                     continue;
-                 } else {
-//                    bb.push_back( *p);
-                 }
+                 } 
             }
-            catch ( Parameter::FindError& e) {
-//                new_failures.push_back( *p);
-            }
-
+            catch ( Parameter::FindError& e) {}
         }
         bb.clear();
         nsrb.clear();
@@ -204,7 +193,6 @@ void fillParameters( Parameter* s, const Config::Properties& p)
     }
 
     try {
-                          //TODO: must be an expression
         prop->threshold = dec2<double>( p["threshold"]);
     }
     catch (Config::NoSuchProp& e) {
@@ -292,16 +280,12 @@ Robot* Dispatcher::makeRobot( const string& name)
         throw runtime_error( "no network: " + c[name][NET]);
     Network* net = networks[ c[name][NET]];
 
-
-//    string addr="";
     string addr="";
     
     try {
         addr = trim(c[name]["addr"]);
     }
-    catch (Config::NoSuchProp& e) {
-//        addr = "";
-    }
+    catch (Config::NoSuchProp& e) {}
 
     if ( NULL == s && type == "Timeticks2TimeStringRobot") {
         s = new Timeticks2TimeStringRobot( name, addr, net);
@@ -337,7 +321,6 @@ void Dispatcher::dropSensor( const string& name)
 }
 
 Runable* Dispatcher::makeNetwork( const string& name)
-//Runable* Dispatcher::makeNetwork()
                           throw ( string, runtime_error)
 {
 
@@ -365,7 +348,6 @@ void Dispatcher::dropNetwork( const string& name)
 Runable* Dispatcher::makeBackend( const string& name)
                                           throw ( string, exception)
 {
-
     const Config& c = config;
     string type = c[name][TYPE];
     Backend* b = NULL;
@@ -388,10 +370,7 @@ Runable* Dispatcher::makeBackend( const string& name)
 
             if ( fn == "TimeFilter")
                 f = new TimeFilter( read_timespec(config[name]["period"]));
-/* 28.12.2023 old version
-            if ( fn == "AlarmFilter")
-                f = new AlarmFilter( Parameter::get( config[name]["semaphore"]));
-*/
+
             if ( NULL != f)
                 static_cast<PGLBackend*>(b)->addFilter(f);
         }
@@ -414,10 +393,7 @@ Runable* Dispatcher::makeBackend( const string& name)
 
             if ( fn == "TimeFilter")
                 f = new TimeFilter( read_timespec(config[name]["period"]));
-/* 28.12.2023 old version
-            if ( fn == "AlarmFilter")
-                f = new AlarmFilter( Parameter::get( config[name]["semaphore"]));
-*/                
+                
             if ( NULL != f)
                  static_cast<LogBackend*>(b)->addFilter(f);
         }

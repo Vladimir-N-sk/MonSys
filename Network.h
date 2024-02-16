@@ -16,9 +16,7 @@ class Network
  : public Backend {
 
 public:
-//    Network::Network();
     Network() {};
-//    virtual Network::~Network();
     virtual ~Network() {};    
 
     void thread();
@@ -27,7 +25,6 @@ public:
     void detach( Parameter*, Backend*);
 
 private:
-    //Backend can be pugged/unplugged dynamically
     Registry< Parameter*, Backend*> listeners;
 };
 

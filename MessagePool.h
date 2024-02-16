@@ -18,7 +18,6 @@ public:
         unsigned short operator()( unsigned short, const value_type&);
     };
 
-
     MessagePool();
     timespec diameter();
     timespec center();

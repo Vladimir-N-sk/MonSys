@@ -205,7 +205,6 @@ void startup( int argc, char** argv)
     if ( warning) {
         cerror_log = new Logger( LOG_ERR);
         cwarning_log = new Logger( LOG_WARNING);
-//        cdebug_log = new Logger( LOG_DEBUG);
     }
 
 

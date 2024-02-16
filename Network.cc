@@ -15,7 +15,6 @@ void Network::detach( Parameter *s, Backend *b)
     listeners.remove( s, b);
 }
 
-
 void Network::detach( Parameter *s)
 {
     listeners.remove( s);

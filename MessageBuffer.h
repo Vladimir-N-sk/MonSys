@@ -5,7 +5,7 @@
 #include "Transport.h"
 #include <map>
 
-class MEssage;
+class Message;
 
 class MessageBuffer : virtual Transport<Message*> {
 

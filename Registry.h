@@ -1,8 +1,6 @@
 #ifndef Registry_h
 #define Registry_h
 
-//using namespace std;
-
 #include <list>
 #include <map>
 
@@ -33,7 +31,6 @@ list<D>* Registry<K,D>::search( const K& key)
 
     lock.rdlock();
 
-//    const pair< RegistryData::iterator, RegistryData::iterator> r = data.equal_range(key);
      auto r = data.equal_range(key);    
 
     for ( typename RegistryData::iterator p = r.first; p != r.second; ++p) {
@@ -76,8 +73,6 @@ void Registry<K,D>::remove( const K& key, const D& d)
 {
     lock.wrlock();
 
-//    pair< RegistryData::iterator, RegistryData::iterator> r;
-//    r = data.equal_range(key);
     auto r = data.equal_range(key);    
     for ( typename RegistryData::iterator p = r.first; p != r.second; ++p) {
         if ( p->second == d) {

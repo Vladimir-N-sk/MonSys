@@ -15,7 +15,6 @@
 #include <sys/stat.h>
 #include <fcntl.h>
 
-//g++
 #include <string.h>
 #include <math.h>
 
@@ -30,7 +29,6 @@ void sig_chld(int);
 
 
 template <typename T>
-//T dec2( const std::string& s) throw (std::runtime_error)
 T dec2( const std::string& s)
 {
     T val;
@@ -41,7 +39,6 @@ T dec2( const std::string& s)
 }
 
 template <typename T>
-//T hex2( const std::string& s) throw (std::runtime_error)
 T hex2( const std::string& s)
 {
     T val;
@@ -51,10 +48,8 @@ T hex2( const std::string& s)
     return val;
 }
 
-//void nanosleep( const timespec& ) throw( std::runtime_error);
 void nanosleep( const timespec& );
 
-//bool BEcheckCRC( const std::string&) throw (std::exception);
 bool BEcheckCRC( const std::string&);
 std::string BEcrc( const int&);
 unsigned short word2short( const unsigned char&, const unsigned char& );

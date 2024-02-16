@@ -9,7 +9,6 @@ class PseudoNetwork : public Network, MessageQueue {
 public:
     PseudoNetwork();
     virtual ~PseudoNetwork();
-
 };
 
 #endif

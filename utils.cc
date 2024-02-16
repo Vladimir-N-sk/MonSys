@@ -1,5 +1,4 @@
 
-
 #include "common.h"
 #include "globals.h"
 #include "utils.h"
@@ -101,9 +100,8 @@ string int2hex( const int& t, const unsigned& n)
 string uns2hex( const unsigned short& t, const char& n)
 {
     stringstream buf;
-//    string ttt;
     buf << setw(n) << setfill ('0') << uppercase << hex << t;
-//    ttt = buf.str();
+
     return string( buf.str());
 }
 string short2hex( const short& t, const unsigned& n)
@@ -124,8 +122,6 @@ string ch2hex( const unsigned char& t, const unsigned& n)
 	string an="";
         an=an+int2hex(t,n);
         return an;
-
-
 }
 string str2hex( const string& s)
 {
@@ -152,7 +148,6 @@ string str2ascii( const string& s)
             char b;
             for (int i=0;i<s.size();i++){
                 b = ( s[i] > 31) ? s[i] : ch[0];
-//                b=s[i];
                 an=an+b;
             };
           return an;
@@ -214,7 +209,6 @@ istream& operator>>( istream& f, timespec& t)
 
 istream& operator>>( istream& f, QuotedString& s)
 {
-    MONSYS_DEBUG << "operator utils str 220 " <<endl;
     noskipws( f);
     f >> ws;
 
@@ -299,7 +293,6 @@ void daemonize()
             throw runtime_error( "signal: " + error());
 
 signal(SIGCHLD, sig_chld);
-//signal(SIGCHLD, SIG_DFL);
 
     switch( fork()) {
     case 0:
@@ -313,7 +306,6 @@ signal(SIGCHLD, sig_chld);
     if ( -1 == setsid())
         throw runtime_error( "setsid: " + error());
 
-//    for ( unsigned fd=0; fd < film.rlim_max; fd++)
     for ( unsigned fd=0; fd < 3; fd++)
         close(fd);
 
@@ -491,13 +483,11 @@ bool operator!=( const timespec& a, const timespec& b)
 }
 
 void nanosleep( const timespec& t)
-//void nanosleep( const timespec& t) throw( runtime_error)
 {
     if ( -1 == nanosleep( &t, NULL))
         throw runtime_error( "nanosleep failed: " + error());
 }
 
-//bool BEcheckCRC( const string& bcrc ) throw (exception)
 bool BEcheckCRC( const string& bcrc )
 {
 
@@ -513,7 +503,7 @@ bool BEcheckCRC( const string& bcrc )
       crc2=bcrc.substr( (bcrc.size()-4), 3  );
 
     if ( crc1 == crc2 ) return true;
-//MONSYS_DEBUG << this->getName() << " crc1:" << crc1<< " crc2:"<< crc2 << endl;
+
     return false;
 }
 

@@ -1,5 +1,4 @@
 
-
 #include "common.h"
 #include "globals.h"
 #include "utils.h"
@@ -40,14 +39,11 @@ void S2SMapRobot::automat(Message* m)
             Message * const n = new Message(this, ip->second);
             n->setAlarm( m->getAlarm());
             n->post();
-MONSYS_DEBUG << "S2S MsgName:"<<n->getParameterName() << " MsgText:"<<  n->getTextValue() << " MsgAlarm:"<<  n->getAlarm() <<endl;
-
         }
     }
     catch ( Message::empty& e) {
       Message * const n = new Message(this);
       n->post();
-//        new Message( this)->post();
     }
 }
 
@@ -70,7 +66,6 @@ void D2DMapRobot::automat(Message* m)
 
     try {
         const string i = double2str(m->getDoubleValue());
-//            MONSYS_DEBUG << "D2D i: " << i  << " getInt:"<< m->getIntValue()<< " getDouble"<< m->getDoubleValue()<<endl;
         const D2DMapRobot::Map::const_iterator ip = d2dmap.find(i);
 
         if ( d2dmap.end() == ip) {
@@ -118,7 +113,6 @@ void Timeticks2TimeStringRobot::automat(Message* m)
             Message * const n = new Message(this, str);
             n->setAlarm( m->getAlarm());
             n->post();
-MONSYS_DEBUG << this->getName()<< ":("<<int2str(tt) << ") "<<str <<endl;
     }
     catch ( Message::empty& e) {
       Message * const n = new Message(this);

@@ -8,6 +8,7 @@
 #include <algorithm>
 #include <numeric>
 
+
 timespec MessagePool::center()
 {
     return avgTime;

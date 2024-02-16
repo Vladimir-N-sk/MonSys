@@ -13,11 +13,9 @@
 #include "MessageQueue.h"
 #include "MessagePool.h"
 
-
 template <typename R>
 class Expression;
 class Message;
-
 
 class PoolRobot
  : public Robot {

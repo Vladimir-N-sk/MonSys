@@ -4,7 +4,6 @@
 #include "Runable.h"
 #include "Parameter.h"
 
-
 #include <string>
 
 class Network;
@@ -46,7 +45,7 @@ class MBSensor
 
 public:
     MBSensor( const string&, const Address&, Network*);
-//              const timespec&, const timespec&, unsigned wt = 3);
+
     virtual ~MBSensor()noexcept {};
 
 protected:

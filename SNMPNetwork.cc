@@ -20,7 +20,6 @@ SNMPNetwork::SNMPNetwork()
 }
 
 SNMPNetwork::~SNMPNetwork()
-{
-}
+{}
 
 #endif

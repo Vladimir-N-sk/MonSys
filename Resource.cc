@@ -9,7 +9,6 @@
 #include <sstream>
 #include <string>
 
-
 const string* StringTimeGenerator::operator()( timespec t)
 {
     return new string( timespec2isotime( t));
@@ -38,7 +37,7 @@ const string* StringNumGenerator<double>::operator()( const double& value)
                                                throw(runtime_error)
 {
     stringstream msgbuf;
-//    msgbuf << value;
+
     msgbuf  << setprecision(7) << value;
     return new string(msgbuf.str());
 }

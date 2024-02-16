@@ -8,7 +8,6 @@ class Parameter;
 class MessagePool;
 
 #include "Message.h"
-// orig 
 #include "Parser.h"
 
 class Expr {
@@ -92,7 +91,6 @@ public:
 
 private:
     BExpression();
-//AVN 28/11/2023    const auto_ptr< Expression<A> > larg, rarg;
     const shared_ptr< Expression<A> > larg, rarg;
     OP op;
 };
@@ -136,7 +134,6 @@ class AlarmExpression
 public:
     AlarmExpression( unsigned l)
         : level( l) {}
-//    bool evaluate() const throw (Expr::UnfindedVar);
     bool evaluate() const throw (Expr::UnfindedVar, Message::empty);
 private:
     unsigned level;

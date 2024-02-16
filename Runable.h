@@ -9,7 +9,6 @@
 class Runable {
 
 public:
-//    Runable::Runable();
     Runable();    
 
     void run() throw (runtime_error);

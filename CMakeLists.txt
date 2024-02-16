@@ -45,9 +45,9 @@ add_library ( lib-mon STATIC
     utils.cc
     )
 
-#add_library(lib_snmp STATIC IMPORTED)
-#set_property(TARGET lib_snmp PROPERTY
-#                 IMPORTED_LOCATION /usr/local/lib/libnetsnmp.a)
+add_library(lib_snmp STATIC IMPORTED)
+set_property(TARGET lib_snmp PROPERTY
+                 IMPORTED_LOCATION /usr/local/lib/libnetsnmp.a)
 
 #add_library(lib_psql STATIC IMPORTED)
 #set_property(TARGET lib_psql PROPERTY
@@ -73,10 +73,10 @@ target_compile_features(lib-mon PUBLIC cxx_std_14)
 
 target_link_libraries(monsys
 lib-mon
-#lib_snmp
+lib_snmp
 #lib_psql
 -lpthread
 /usr/lib/x86_64-linux-gnu/libpq.so
-/usr/local/lib/libnetsnmp.so
+#/usr/local/lib/libnetsnmp.so
 )
 

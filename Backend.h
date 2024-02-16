@@ -6,7 +6,6 @@
 #include "Transport.h"
 
 class Message;
-
 class Backend
  : virtual public Runable, virtual public Transport<Message*> {
 

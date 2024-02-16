@@ -1,13 +1,10 @@
 #ifdef EXPRESSIONS
 
-
 #include "AlarmBoolRobot.h"
 
 void PoolRobot::automat( Message* m)
 {
-
     pool.put( m);
-
     setPStatus( pool.status());
 
     if (pool.status()) {
@@ -21,7 +18,6 @@ void PoolRobot::automat( Message* m)
     }
     catch ( Expr::UnfindedVar& e) {  }
     catch ( Message::empty& e) {
-// Original  17/07/2015        new Message( this)->post();//pool.center() XXX
 
                 if ( 1 == getProperties()->type ) {
                    Message* const n = new Message(this);

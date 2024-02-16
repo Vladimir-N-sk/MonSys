@@ -18,7 +18,6 @@ protected:
     mutable bool dismissed_;
 
 private:
-    // Disable assignment
     ScopeGuardImplBase& operator=( const ScopeGuardImplBase&);
 };
 

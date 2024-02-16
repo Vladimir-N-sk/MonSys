@@ -9,13 +9,11 @@
 typedef string Address;
 
 const unsigned char WEDGED = 1;
-//const string SENSOR_OK = "Sensor Ok";
-//const string SENSOR_BAD = "Sensor bad";
 
 class Message;
 class Network;
 
-//#ifdef EXPRESSIONS
+
 template <typename A>
 class Expression;
 
@@ -30,7 +28,7 @@ private:
     alarms_type alarms;
 
 };
-//#endif //EXPRESSIONS
+
 
 class Parameter {
 
@@ -56,9 +54,8 @@ public:
     static Parameter* getNextByAddr( const Address&);
 
     Parameter( const string&, const Address&, Network*);
-// original  
+
     virtual ~Parameter() noexcept;
-//    ~Parameter();    
 
     Properties* getProperties() const;
     void setProperties( Properties*);
@@ -83,12 +80,10 @@ public:
     }
     virtual void SOK()
     {
-//        lastReadError = SENSOR_OK;
               runtime_error("SENSOR OK");
     }
     virtual void S_BAD()
     {
-//        lastReadError = SENSOR_BAD;
         runtime_error("SENSOR BAD");
     }
 

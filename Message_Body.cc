@@ -4,7 +4,6 @@
 
 #include "Message_Body.h"
 
-// specialization for regarding char* as string -----------
 Message::Body<char*>::Body( char* v)
  : value(v)
 {
@@ -34,6 +33,7 @@ int Message::Body<char*>::toInt()
 {
     return 0;
 }
+
 //----------------------------------------------------------
 template<>
 string Message::Body<int>::toString()

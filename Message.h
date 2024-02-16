@@ -48,7 +48,7 @@ public:
 
     class BodyBase {
     public:
-//AVN
+
         virtual ~BodyBase() noexcept {};
         virtual string toString() = 0;
         virtual double toDouble() = 0;
@@ -125,7 +125,6 @@ public:
 
     const string getTextValue() throw( empty);
     double getDoubleValue() throw( empty);
-//    long getLongValue() throw( empty);
     int getIntValue() throw( empty);
 
     unsigned short getAlarm() const throw( empty)
@@ -138,7 +137,6 @@ public:
     {
         if ( i >= MAXALARM)
             throw runtime_error( source->getName() + ": alarm overflow");
-//            MONSYS_ERROR << source->getName() << ": alarm overflow" << endl;
         alarm = i;
     }
 
@@ -151,7 +149,6 @@ public:
     {
         if ( i > 0xff)
             throw runtime_error( source->getName() + ": status overflow");
-//            MONSYS_ERROR << source->getName() << ": status overflow" << endl;
         status = i;
     }
 
@@ -163,9 +160,7 @@ private:
     unsigned short alarm;
     unsigned short status;
 
-//AVN    const auto_ptr<BodyBase> body;
-//    const std::unique_ptr<BodyBase> body;    
     const std::shared_ptr<BodyBase> body;        
-//AVN    template <typename T> class Body;
+
 };
 #endif

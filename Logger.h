@@ -5,6 +5,7 @@
 #include <ostream>
 #include <sstream>
 
+
 class Loggerbuf
  : public std::stringbuf {
 

@@ -5,6 +5,7 @@
 
 #include <cerrno>
 
+
 pthread_mutex_t Mutex::getMutex() throw (runtime_error)
 {
     int err;

@@ -6,8 +6,7 @@
 
 #include "Message.h"
 #include "LogBackend.h"
-
-#include "SocketNetwork.h"
+//#include "SocketNetwork.h"
 
 
 const string errmsg = "LogBackend: not open file ";
@@ -22,7 +21,6 @@ LogBackend::LogBackend( const string& fName)
 
 LogBackend::~LogBackend()
 {
-//    stop();
 }
 
 void LogBackend::thread()

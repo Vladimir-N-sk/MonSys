@@ -1,6 +1,5 @@
 
 #include "common.h"
-
 #include "Logger.h"
 
 #include <syslog.h>
@@ -25,11 +24,7 @@ int Loggerbuf::sync()
         opend = true;
     }
 
-//if (level != LOG_WARNING) {
     syslog( level, "%s", str().data());
-//} else {
-//      syslog( LOG_WARNING, "%s", str().data());
-//};
     str("");
     return 0;
 }

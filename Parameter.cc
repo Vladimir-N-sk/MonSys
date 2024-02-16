@@ -92,13 +92,6 @@ void Parameter::postMessage( Message* const msg)
     Message* const old_message = lm;
     lm = msg; //XXX dirty trick
 
-/* AVN tmp 
-    if ( NULL != properties->dontTrustExpr && properties->dontTrustExpr->evaluate()) {
-        setLM( old_message);
-        return;
-    } 
-*/
-
     if ( NULL != properties->dontTrustExpr ) {        
         setLM( old_message);
         return;
@@ -170,24 +163,22 @@ void Parameter::setLM( Message* const msg) // remove last message and put new
 AlarmList::~AlarmList()
 {
     for ( alarms_type::iterator p = alarms.begin(); alarms.end() != p; p++) {
-// AVN 25.10        delete p->second;
+            delete p->second;
     }
 }
 
 void AlarmList::push( unsigned i, Expression<bool>* e)
 {
     alarms.push_back( pair<unsigned, Expression<bool>*>( i, e));
-//   MONSYS_DEBUG  << "AlarmList::push i:"<< i << endl;
 }
 
 unsigned AlarmList::examine()
 {
     for ( alarms_type::iterator a = alarms.begin(); a != alarms.end(); a++) {
-// AVN 25.10        if ( a->second->evaluate()) {
-// AVN 25.10            return a->first;
-// AVN 25.10        }
+        if ( a->second->evaluate()) {
+            return a->first;
+        }
     }
-//MONSYS_DEBUG  << "4 AlarmList::examine: return MAXALARM"<< endl;
     return MAXALARM;
 }
 #endif //EXPRESSIONS

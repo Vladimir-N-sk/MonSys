@@ -4,7 +4,6 @@
 #include <list>
 #include "MTSync.h"
 
-
 template <typename MESSAGE>
 class Transport {
 

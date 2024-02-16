@@ -7,6 +7,5 @@ PseudoNetwork::PseudoNetwork() {
 }
 
 PseudoNetwork::~PseudoNetwork() {
-
 }
 
