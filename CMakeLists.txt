@@ -39,6 +39,7 @@ add_library ( lib-mon STATIC
     RndSensor.cc
     SNMPSensor.cc
     SNMPNetwork.cc
+    SocketNetwork.cc
     Sensor.cc
     S2SMapRobot.cc
     Parameter.cc

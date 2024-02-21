@@ -39,5 +39,33 @@ private:
     size_t anOID_len;
 };
 
+
+//class SNMPOpenNetwork;
+
+class SNMPScanerSensor
+ : public WTSensor {
+// : public RTSensor {  
+
+public:
+    SNMPScanerSensor( const string&, const Address&, SNMPNetwork*, const string&,
+      const string&, const string&, const unsigned int&,
+      const timespec&, const timespec&, const unsigned&)  throw(string);
+    virtual ~SNMPScanerSensor();
+    Message* getSensorData() throw(exception);
+
+private:
+//SNMPOpenNetwork *net;
+
+    void *sessp;             // an opaque pointer, not a struct pointer
+    snmp_session *sptr;
+    snmp_pdu *pdu;
+    oid anOID[MAX_OID_LEN];
+    size_t anOID_len;
+    string host, var, community;
+    unsigned version;
+    timespec zad;
+};
+
+
 #endif
 #endif

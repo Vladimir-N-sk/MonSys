@@ -238,6 +238,31 @@ string addr= "";
     Network& net = *networks[ c[name][NET]];
 
 #ifdef NETSNMP
+
+    if ( NULL == s && type == "SNMPScanerSensor") {
+
+        string tmp;
+        unsigned wt=4294967295; // 255.255.255.255
+        unsigned SNMP_VERSION = SNMP_VERSION_1;
+        try {
+            SNMP_VERSION = ( dec2<unsigned>( config[name]["version"]) == 1) ? SNMP_VERSION_1:SNMP_VERSION_2c;
+            MONSYS_DEBUG << "Parametr <" << name << "> set SNMP_VERSION = " << (tmp = ( dec2<unsigned>( config[name]["version"]) == 1) ? "SNMP_VERSION_1":"SNMP_VERSION_2c") << endl;
+        }
+        catch (Config::NoSuchProp& e) {
+            MONSYS_DEBUG << "Parametr <" << name <<"> default set SNMP_VERSION = SNMP_VERSION_1" << endl;
+        }
+
+        s = new SNMPScanerSensor( name, addr,
+                            &dynamic_cast<SNMPNetwork&>( net),
+                            c[name]["host"],
+                            c[name]["var"], c[name]["community"], SNMP_VERSION,
+                            read_timespec(c[name][TIMEOUT]), 
+                            read_timespec(c[name][DELAY]),
+                            wt
+                            );
+    }
+
+
     if ( NULL == s && type == "SNMPSensor") {
 
         string tmp;
@@ -330,6 +355,10 @@ Runable* Dispatcher::makeNetwork( const string& name)
 #ifdef NETSNMP
     if ( NULL == n && type == "SNMPNetwork")
         n = new SNMPNetwork();
+
+//    if ( NULL == n && type == "SNMPOpenNetwork")
+//        n = new SNMPOpenNetwork();
+
 #endif
 
     if ( type == "PseudoNetwork")
