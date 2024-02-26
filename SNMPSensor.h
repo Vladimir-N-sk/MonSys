@@ -6,6 +6,7 @@
 #include "common.h"
 #include "globals.h"
 #include "Sensor.h"
+//#include "utils.h"
 
 #include <string>
 #include <sys/socket.h>
@@ -47,7 +48,7 @@ class SNMPScanerSensor
 // : public RTSensor {  
 
 public:
-    SNMPScanerSensor( const string&, const Address&, SNMPNetwork*, const string&,
+    SNMPScanerSensor( const string&, const Address&, SNMPNetwork*, const string&, const string&,
       const string&, const string&, const unsigned int&,
       const timespec&, const timespec&, const unsigned&)  throw(string);
     virtual ~SNMPScanerSensor();
@@ -55,6 +56,7 @@ public:
 
 private:
 //SNMPOpenNetwork *net;
+    void IPplus();
 
     void *sessp;             // an opaque pointer, not a struct pointer
     snmp_session *sptr;
@@ -62,7 +64,7 @@ private:
     oid anOID[MAX_OID_LEN];
     size_t anOID_len;
     string host, var, community;
-    unsigned version;
+    unsigned version, ua1, ub1, uc1, ud1, ua2, ub2, uc2, ud2;
     timespec zad;
 };
 

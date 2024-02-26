@@ -18,6 +18,10 @@
 #include <string.h>
 #include <math.h>
 
+#include "Time.h"
+#include "common.h"
+#include "globals.h"
+
 using namespace std;
 
 void initRND();
@@ -57,6 +61,8 @@ std::string delspace( const std::string&);
 std::string hex2str( const std::string&);
 std::string int2str( const int& , const int& , const char&);
 std::string int2str( const int&);
+std::string uns2str( const unsigned&);
+std::string uns2str( const unsigned&, const int&, const char&);
 std::string ush2str( const unsigned short&, const int&, const char&);
 std::string ush2str( const unsigned short&);
 std::string uch2str( const unsigned char&);

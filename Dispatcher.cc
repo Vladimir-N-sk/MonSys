@@ -255,6 +255,7 @@ string addr= "";
         s = new SNMPScanerSensor( name, addr,
                             &dynamic_cast<SNMPNetwork&>( net),
                             c[name]["host"],
+                            c[name]["host2"],
                             c[name]["var"], c[name]["community"], SNMP_VERSION,
                             read_timespec(c[name][TIMEOUT]), 
                             read_timespec(c[name][DELAY]),

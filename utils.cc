@@ -1,8 +1,5 @@
 
-#include "common.h"
-#include "globals.h"
 #include "utils.h"
-#include "Time.h"
 
 string delspace( const string& s)
 {
@@ -18,11 +15,14 @@ string delspace( const string& s)
 
 unsigned short word2short( const unsigned char& w1, const unsigned char& w2)
 {
-
  return hex2<unsigned short>( ch2hex(w1,2)+ch2hex(w2,2) );
-
 }
 
+/*unsigned str2uns( const string& s)
+{
+ return hex2<unsigned short>( ch2hex(w1,2)+ch2hex(w2,2) );
+}
+*/
 
 string hex2str( const string& s)
 {
@@ -49,6 +49,21 @@ string int2str( const int& t)
     buf << t;
     return string( buf.str());
 }
+
+string uns2str( const unsigned& t)
+{
+    stringstream buf;
+    buf << t;
+    return string( buf.str());
+}
+
+string uns2str( const unsigned& t, const int& n, const char& c)
+{
+    stringstream buf;
+    buf << setw(n) << setfill (c)<< right << t;
+    return string( buf.str());
+}
+
 string ush2str( const unsigned short& t, const int& n, const char& c)
 {
     stringstream buf;
