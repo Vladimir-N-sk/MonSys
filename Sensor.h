@@ -71,6 +71,8 @@ protected:
     const timespec timeout;
 
 private:
+    timespec time_begin;
+    timespec time_end;
     const timespec delay;
     bool firstTimeRun;
     unsigned timeouts;

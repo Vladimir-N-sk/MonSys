@@ -1,0 +1,199 @@
+[
+{
+  "directory": "/home/monsys/MonSys/build",
+  "command": "/usr/bin/g++  -DEXPRESSIONS -DNETSNMP -I/usr/local/include -I/usr/include/postgresql -I/usr/local/include/net-snmp/library  -g   -pthread -fPIC -Wno-deprecated -std=gnu++14 -o CMakeFiles/monsys.dir/monsys.cc.o -c /home/monsys/MonSys/monsys.cc",
+  "file": "/home/monsys/MonSys/monsys.cc"
+},
+
+{
+  "directory": "/home/monsys/MonSys/build",
+  "command": "/usr/bin/g++  -DEXPRESSIONS -DNETSNMP -I/usr/local/include -I/usr/include/postgresql -I/usr/local/include/net-snmp/library  -g   -pthread -fPIC -Wno-deprecated -std=gnu++14 -o CMakeFiles/lib-mon.dir/AlarmBoolRobot.cc.o -c /home/monsys/MonSys/AlarmBoolRobot.cc",
+  "file": "/home/monsys/MonSys/AlarmBoolRobot.cc"
+},
+
+{
+  "directory": "/home/monsys/MonSys/build",
+  "command": "/usr/bin/g++  -DEXPRESSIONS -DNETSNMP -I/usr/local/include -I/usr/include/postgresql -I/usr/local/include/net-snmp/library  -g   -pthread -fPIC -Wno-deprecated -std=gnu++14 -o CMakeFiles/lib-mon.dir/Dispatcher.cc.o -c /home/monsys/MonSys/Dispatcher.cc",
+  "file": "/home/monsys/MonSys/Dispatcher.cc"
+},
+
+{
+  "directory": "/home/monsys/MonSys/build",
+  "command": "/usr/bin/g++  -DEXPRESSIONS -DNETSNMP -I/usr/local/include -I/usr/include/postgresql -I/usr/local/include/net-snmp/library  -g   -pthread -fPIC -Wno-deprecated -std=gnu++14 -o CMakeFiles/lib-mon.dir/Logger.cc.o -c /home/monsys/MonSys/Logger.cc",
+  "file": "/home/monsys/MonSys/Logger.cc"
+},
+
+{
+  "directory": "/home/monsys/MonSys/build",
+  "command": "/usr/bin/g++  -DEXPRESSIONS -DNETSNMP -I/usr/local/include -I/usr/include/postgresql -I/usr/local/include/net-snmp/library  -g   -pthread -fPIC -Wno-deprecated -std=gnu++14 -o CMakeFiles/lib-mon.dir/LogBackend.cc.o -c /home/monsys/MonSys/LogBackend.cc",
+  "file": "/home/monsys/MonSys/LogBackend.cc"
+},
+
+{
+  "directory": "/home/monsys/MonSys/build",
+  "command": "/usr/bin/g++  -DEXPRESSIONS -DNETSNMP -I/usr/local/include -I/usr/include/postgresql -I/usr/local/include/net-snmp/library  -g   -pthread -fPIC -Wno-deprecated -std=gnu++14 -o CMakeFiles/lib-mon.dir/Config.cc.o -c /home/monsys/MonSys/Config.cc",
+  "file": "/home/monsys/MonSys/Config.cc"
+},
+
+{
+  "directory": "/home/monsys/MonSys/build",
+  "command": "/usr/bin/g++  -DEXPRESSIONS -DNETSNMP -I/usr/local/include -I/usr/include/postgresql -I/usr/local/include/net-snmp/library  -g   -pthread -fPIC -Wno-deprecated -std=gnu++14 -o CMakeFiles/lib-mon.dir/Expression.cc.o -c /home/monsys/MonSys/Expression.cc",
+  "file": "/home/monsys/MonSys/Expression.cc"
+},
+
+{
+  "directory": "/home/monsys/MonSys/build",
+  "command": "/usr/bin/g++  -DEXPRESSIONS -DNETSNMP -I/usr/local/include -I/usr/include/postgresql -I/usr/local/include/net-snmp/library  -g   -pthread -fPIC -Wno-deprecated -std=gnu++14 -o CMakeFiles/lib-mon.dir/Filtered.cc.o -c /home/monsys/MonSys/Filtered.cc",
+  "file": "/home/monsys/MonSys/Filtered.cc"
+},
+
+{
+  "directory": "/home/monsys/MonSys/build",
+  "command": "/usr/bin/g++  -DEXPRESSIONS -DNETSNMP -I/usr/local/include -I/usr/include/postgresql -I/usr/local/include/net-snmp/library  -g   -pthread -fPIC -Wno-deprecated -std=gnu++14 -o CMakeFiles/lib-mon.dir/MSGBackend.cc.o -c /home/monsys/MonSys/MSGBackend.cc",
+  "file": "/home/monsys/MonSys/MSGBackend.cc"
+},
+
+{
+  "directory": "/home/monsys/MonSys/build",
+  "command": "/usr/bin/g++  -DEXPRESSIONS -DNETSNMP -I/usr/local/include -I/usr/include/postgresql -I/usr/local/include/net-snmp/library  -g   -pthread -fPIC -Wno-deprecated -std=gnu++14 -o CMakeFiles/lib-mon.dir/MTSync.cc.o -c /home/monsys/MonSys/MTSync.cc",
+  "file": "/home/monsys/MonSys/MTSync.cc"
+},
+
+{
+  "directory": "/home/monsys/MonSys/build",
+  "command": "/usr/bin/g++  -DEXPRESSIONS -DNETSNMP -I/usr/local/include -I/usr/include/postgresql -I/usr/local/include/net-snmp/library  -g   -pthread -fPIC -Wno-deprecated -std=gnu++14 -o CMakeFiles/lib-mon.dir/Network.cc.o -c /home/monsys/MonSys/Network.cc",
+  "file": "/home/monsys/MonSys/Network.cc"
+},
+
+{
+  "directory": "/home/monsys/MonSys/build",
+  "command": "/usr/bin/g++  -DEXPRESSIONS -DNETSNMP -I/usr/local/include -I/usr/include/postgresql -I/usr/local/include/net-snmp/library  -g   -pthread -fPIC -Wno-deprecated -std=gnu++14 -o CMakeFiles/lib-mon.dir/Message.cc.o -c /home/monsys/MonSys/Message.cc",
+  "file": "/home/monsys/MonSys/Message.cc"
+},
+
+{
+  "directory": "/home/monsys/MonSys/build",
+  "command": "/usr/bin/g++  -DEXPRESSIONS -DNETSNMP -I/usr/local/include -I/usr/include/postgresql -I/usr/local/include/net-snmp/library  -g   -pthread -fPIC -Wno-deprecated -std=gnu++14 -o CMakeFiles/lib-mon.dir/Message_Body.cc.o -c /home/monsys/MonSys/Message_Body.cc",
+  "file": "/home/monsys/MonSys/Message_Body.cc"
+},
+
+{
+  "directory": "/home/monsys/MonSys/build",
+  "command": "/usr/bin/g++  -DEXPRESSIONS -DNETSNMP -I/usr/local/include -I/usr/include/postgresql -I/usr/local/include/net-snmp/library  -g   -pthread -fPIC -Wno-deprecated -std=gnu++14 -o CMakeFiles/lib-mon.dir/MessageQueue.cc.o -c /home/monsys/MonSys/MessageQueue.cc",
+  "file": "/home/monsys/MonSys/MessageQueue.cc"
+},
+
+{
+  "directory": "/home/monsys/MonSys/build",
+  "command": "/usr/bin/g++  -DEXPRESSIONS -DNETSNMP -I/usr/local/include -I/usr/include/postgresql -I/usr/local/include/net-snmp/library  -g   -pthread -fPIC -Wno-deprecated -std=gnu++14 -o CMakeFiles/lib-mon.dir/MessagePool.cc.o -c /home/monsys/MonSys/MessagePool.cc",
+  "file": "/home/monsys/MonSys/MessagePool.cc"
+},
+
+{
+  "directory": "/home/monsys/MonSys/build",
+  "command": "/usr/bin/g++  -DEXPRESSIONS -DNETSNMP -I/usr/local/include -I/usr/include/postgresql -I/usr/local/include/net-snmp/library  -g   -pthread -fPIC -Wno-deprecated -std=gnu++14 -o CMakeFiles/lib-mon.dir/MessageBuffer.cc.o -c /home/monsys/MonSys/MessageBuffer.cc",
+  "file": "/home/monsys/MonSys/MessageBuffer.cc"
+},
+
+{
+  "directory": "/home/monsys/MonSys/build",
+  "command": "/usr/bin/g++  -DEXPRESSIONS -DNETSNMP -I/usr/local/include -I/usr/include/postgresql -I/usr/local/include/net-snmp/library  -g   -pthread -fPIC -Wno-deprecated -std=gnu++14 -o CMakeFiles/lib-mon.dir/ModbusIntSocketSensor.cc.o -c /home/monsys/MonSys/ModbusIntSocketSensor.cc",
+  "file": "/home/monsys/MonSys/ModbusIntSocketSensor.cc"
+},
+
+{
+  "directory": "/home/monsys/MonSys/build",
+  "command": "/usr/bin/g++  -DEXPRESSIONS -DNETSNMP -I/usr/local/include -I/usr/include/postgresql -I/usr/local/include/net-snmp/library  -g   -pthread -fPIC -Wno-deprecated -std=gnu++14 -o CMakeFiles/lib-mon.dir/Parser.cc.o -c /home/monsys/MonSys/Parser.cc",
+  "file": "/home/monsys/MonSys/Parser.cc"
+},
+
+{
+  "directory": "/home/monsys/MonSys/build",
+  "command": "/usr/bin/g++  -DEXPRESSIONS -DNETSNMP -I/usr/local/include -I/usr/include/postgresql -I/usr/local/include/net-snmp/library  -g   -pthread -fPIC -Wno-deprecated -std=gnu++14 -o CMakeFiles/lib-mon.dir/Parser.tab.cc.o -c /home/monsys/MonSys/Parser.tab.cc",
+  "file": "/home/monsys/MonSys/Parser.tab.cc"
+},
+
+{
+  "directory": "/home/monsys/MonSys/build",
+  "command": "/usr/bin/g++  -DEXPRESSIONS -DNETSNMP -I/usr/local/include -I/usr/include/postgresql -I/usr/local/include/net-snmp/library  -g   -pthread -fPIC -Wno-deprecated -std=gnu++14 -o CMakeFiles/lib-mon.dir/PGBackend.cc.o -c /home/monsys/MonSys/PGBackend.cc",
+  "file": "/home/monsys/MonSys/PGBackend.cc"
+},
+
+{
+  "directory": "/home/monsys/MonSys/build",
+  "command": "/usr/bin/g++  -DEXPRESSIONS -DNETSNMP -I/usr/local/include -I/usr/include/postgresql -I/usr/local/include/net-snmp/library  -g   -pthread -fPIC -Wno-deprecated -std=gnu++14 -o CMakeFiles/lib-mon.dir/PseudoNetwork.cc.o -c /home/monsys/MonSys/PseudoNetwork.cc",
+  "file": "/home/monsys/MonSys/PseudoNetwork.cc"
+},
+
+{
+  "directory": "/home/monsys/MonSys/build",
+  "command": "/usr/bin/g++  -DEXPRESSIONS -DNETSNMP -I/usr/local/include -I/usr/include/postgresql -I/usr/local/include/net-snmp/library  -g   -pthread -fPIC -Wno-deprecated -std=gnu++14 -o CMakeFiles/lib-mon.dir/Resource.cc.o -c /home/monsys/MonSys/Resource.cc",
+  "file": "/home/monsys/MonSys/Resource.cc"
+},
+
+{
+  "directory": "/home/monsys/MonSys/build",
+  "command": "/usr/bin/g++  -DEXPRESSIONS -DNETSNMP -I/usr/local/include -I/usr/include/postgresql -I/usr/local/include/net-snmp/library  -g   -pthread -fPIC -Wno-deprecated -std=gnu++14 -o CMakeFiles/lib-mon.dir/Runable.cc.o -c /home/monsys/MonSys/Runable.cc",
+  "file": "/home/monsys/MonSys/Runable.cc"
+},
+
+{
+  "directory": "/home/monsys/MonSys/build",
+  "command": "/usr/bin/g++  -DEXPRESSIONS -DNETSNMP -I/usr/local/include -I/usr/include/postgresql -I/usr/local/include/net-snmp/library  -g   -pthread -fPIC -Wno-deprecated -std=gnu++14 -o CMakeFiles/lib-mon.dir/Robot.cc.o -c /home/monsys/MonSys/Robot.cc",
+  "file": "/home/monsys/MonSys/Robot.cc"
+},
+
+{
+  "directory": "/home/monsys/MonSys/build",
+  "command": "/usr/bin/g++  -DEXPRESSIONS -DNETSNMP -I/usr/local/include -I/usr/include/postgresql -I/usr/local/include/net-snmp/library  -g   -pthread -fPIC -Wno-deprecated -std=gnu++14 -o CMakeFiles/lib-mon.dir/RndSensor.cc.o -c /home/monsys/MonSys/RndSensor.cc",
+  "file": "/home/monsys/MonSys/RndSensor.cc"
+},
+
+{
+  "directory": "/home/monsys/MonSys/build",
+  "command": "/usr/bin/g++  -DEXPRESSIONS -DNETSNMP -I/usr/local/include -I/usr/include/postgresql -I/usr/local/include/net-snmp/library  -g   -pthread -fPIC -Wno-deprecated -std=gnu++14 -o CMakeFiles/lib-mon.dir/SNMPSensor.cc.o -c /home/monsys/MonSys/SNMPSensor.cc",
+  "file": "/home/monsys/MonSys/SNMPSensor.cc"
+},
+
+{
+  "directory": "/home/monsys/MonSys/build",
+  "command": "/usr/bin/g++  -DEXPRESSIONS -DNETSNMP -I/usr/local/include -I/usr/include/postgresql -I/usr/local/include/net-snmp/library  -g   -pthread -fPIC -Wno-deprecated -std=gnu++14 -o CMakeFiles/lib-mon.dir/SNMPNetwork.cc.o -c /home/monsys/MonSys/SNMPNetwork.cc",
+  "file": "/home/monsys/MonSys/SNMPNetwork.cc"
+},
+
+{
+  "directory": "/home/monsys/MonSys/build",
+  "command": "/usr/bin/g++  -DEXPRESSIONS -DNETSNMP -I/usr/local/include -I/usr/include/postgresql -I/usr/local/include/net-snmp/library  -g   -pthread -fPIC -Wno-deprecated -std=gnu++14 -o CMakeFiles/lib-mon.dir/SocketNetwork.cc.o -c /home/monsys/MonSys/SocketNetwork.cc",
+  "file": "/home/monsys/MonSys/SocketNetwork.cc"
+},
+
+{
+  "directory": "/home/monsys/MonSys/build",
+  "command": "/usr/bin/g++  -DEXPRESSIONS -DNETSNMP -I/usr/local/include -I/usr/include/postgresql -I/usr/local/include/net-snmp/library  -g   -pthread -fPIC -Wno-deprecated -std=gnu++14 -o CMakeFiles/lib-mon.dir/SocketSensorModbus.cc.o -c /home/monsys/MonSys/SocketSensorModbus.cc",
+  "file": "/home/monsys/MonSys/SocketSensorModbus.cc"
+},
+
+{
+  "directory": "/home/monsys/MonSys/build",
+  "command": "/usr/bin/g++  -DEXPRESSIONS -DNETSNMP -I/usr/local/include -I/usr/include/postgresql -I/usr/local/include/net-snmp/library  -g   -pthread -fPIC -Wno-deprecated -std=gnu++14 -o CMakeFiles/lib-mon.dir/Sensor.cc.o -c /home/monsys/MonSys/Sensor.cc",
+  "file": "/home/monsys/MonSys/Sensor.cc"
+},
+
+{
+  "directory": "/home/monsys/MonSys/build",
+  "command": "/usr/bin/g++  -DEXPRESSIONS -DNETSNMP -I/usr/local/include -I/usr/include/postgresql -I/usr/local/include/net-snmp/library  -g   -pthread -fPIC -Wno-deprecated -std=gnu++14 -o CMakeFiles/lib-mon.dir/S2SMapRobot.cc.o -c /home/monsys/MonSys/S2SMapRobot.cc",
+  "file": "/home/monsys/MonSys/S2SMapRobot.cc"
+},
+
+{
+  "directory": "/home/monsys/MonSys/build",
+  "command": "/usr/bin/g++  -DEXPRESSIONS -DNETSNMP -I/usr/local/include -I/usr/include/postgresql -I/usr/local/include/net-snmp/library  -g   -pthread -fPIC -Wno-deprecated -std=gnu++14 -o CMakeFiles/lib-mon.dir/Parameter.cc.o -c /home/monsys/MonSys/Parameter.cc",
+  "file": "/home/monsys/MonSys/Parameter.cc"
+},
+
+{
+  "directory": "/home/monsys/MonSys/build",
+  "command": "/usr/bin/g++  -DEXPRESSIONS -DNETSNMP -I/usr/local/include -I/usr/include/postgresql -I/usr/local/include/net-snmp/library  -g   -pthread -fPIC -Wno-deprecated -std=gnu++14 -o CMakeFiles/lib-mon.dir/utils.cc.o -c /home/monsys/MonSys/utils.cc",
+  "file": "/home/monsys/MonSys/utils.cc"
+}
+]

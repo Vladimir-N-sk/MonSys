@@ -40,12 +40,8 @@ private:
     size_t anOID_len;
 };
 
-
-//class SNMPOpenNetwork;
-
 class SNMPScanerSensor
  : public WTSensor {
-// : public RTSensor {  
 
 public:
     SNMPScanerSensor( const string&, const Address&, SNMPNetwork*, const string&, const string&,
@@ -55,7 +51,6 @@ public:
     Message* getSensorData() throw(exception);
 
 private:
-//SNMPOpenNetwork *net;
     void IPplus();
 
     void *sessp;             // an opaque pointer, not a struct pointer

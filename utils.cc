@@ -1,6 +1,20 @@
 
 #include "utils.h"
 
+
+int count2str(const string& s1, const string& s2 )
+{
+    int cc=0;
+    size_t pos=0;
+
+    while ( pos != string::npos) {
+        pos=s1.find(s2, ++pos);
+        ++cc;
+    }
+    return cc;
+}
+
+
 string delspace( const string& s)
 {
 
@@ -535,4 +549,43 @@ string sum="";
           break;
         }
         return sum;
+}
+
+bool checkCRC( const string& bcrc ) throw (exception)
+{
+ string sss;
+
+   sss=str2hex(bcrc);
+
+    const string crc1=modbus_rtu_crc(sss.substr(0,sss.length()-4));
+    const string crc2=sss.substr(sss.length()-4,4);
+
+    if ( crc1 == crc2 ) return true;
+    MONSYS_DEBUG << " Modbus error CRC, answer:"<< str2hex(bcrc, " ")<<" crc calc:" << crc1<< " crc get:"<< crc2 << endl;
+    return false;
+}
+
+string modbus_rtu_crc(const string& buff) throw (exception)
+{
+  unsigned short CRC = 0xFFFF, bb=0, lngth=buff.length()/2, it=0;
+  unsigned char  i=0;
+  unsigned char chch[530];
+  string tmp;
+
+ for ( int nn=0; nn<buff.length(); nn=nn+2)
+ {
+    chch[bb]=hex2<unsigned>(buff.substr(nn,2));
+    bb++;
+ };
+
+  while (lngth--)
+  {
+    CRC ^= chch[it];
+    for ( i=8;i>0;i--)
+      if (CRC & 1)  { CRC >>= 1; CRC ^= 0xA001; }
+      else          { CRC >>= 1; }
+      it++;
+  }
+  tmp=short2hex(CRC,4);
+  return (tmp.substr(2,2)+tmp.substr(0,2));
 }

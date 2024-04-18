@@ -143,7 +143,6 @@ void WTSensor::thread()
 
     timespec remains = now();
 
-
     body();//XXX bad name
 
     remains += delay - now();
@@ -161,11 +160,16 @@ void WTSensor::thread()
 void WTSensor::body()
 {
 
+int tbs, tes;
+
     try {
 
-    timespec time_begin=now();
-    Message * const msg = getSensorData();
-    timespec time_end=now();
+        timespec time_begin=now();
+        tbs=time_begin.tv_sec;
+
+        Message * const msg = getSensorData();
+
+	    timespec time_end=now();    
 
     if (timeouts > 0) timeouts -= 1;
 
@@ -182,18 +186,21 @@ void WTSensor::body()
     }
     catch( runtime_error& e) {
 
+	    timespec time_end=now();    
+        tes=time_end.tv_sec;
+
         timeouts = ( 0 != timeouts + 1) ? timeouts + 1 : timeouts;
 
         if ( getPStatus() & WEDGED)  {
             sendWedgedMessage();
-            MONSYS_DEBUG << "Sensor "<<this->getName()  << " sensor no answer, attempt: "<< timeouts <<" "
-                         << e.what() << endl;
+            MONSYS_DEBUG << "Sensor "<<this->getName()  << ", sensor no answer, "<<" timeout (ms): "<< milisec(time_end-time_begin)
+                        << ", attempt: "<< timeouts <<" "<< e.what() << endl;
             return;
         }
 
         if ( timeouts < wedgedThreshold) {
-            MONSYS_DEBUG << this->getName()  << " attempt: "<< timeouts <<" "
-                         << e.what() << endl;
+            MONSYS_DEBUG << this->getName()  << " attempt: "<< timeouts <<" timeout(sec): "<< (tes  - tbs )
+                         << " "<< e.what() << endl;
             return;
         }
 

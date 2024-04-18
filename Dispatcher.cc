@@ -7,6 +7,8 @@
 
 #include "Sensor.h"
 #include "Network.h"
+#include "SocketNetwork.h"
+#include "SocketSensorModbus.h"
 #include "Backend.h"
 #include "Robot.h"
 #include "Config.h"
@@ -29,6 +31,8 @@
 #include "S2SMapRobot.h"
 #include "LogBackend.h"
 #include "AlarmBoolRobot.h"
+#include "ModbusIntSocketSensor.h"
+#include "MSGBackend.h"
 
 #ifdef PSQL
     #include "PGBackend.h"
@@ -212,6 +216,55 @@ void fillParameters( Parameter* s, const Config::Properties& p)
     }
     catch (Config::NoSuchProp& e) {
     }
+
+    double x;
+    AlarmList ta;
+
+    for ( unsigned i=0; i < MAXALARM; i++) {
+        try {
+            stringstream buf;
+            buf << i;
+
+            const string alarm_string = p[string("alarm") + buf.str()];
+
+            prop->alarms.push( i, Expression<bool>::make( s, alarm_string));
+            MONSYS_DEBUG << "alarm" << buf.str() << ": " << alarm_string << endl;
+
+            ta.push( i, Expression<bool>::make( &x, alarm_string));
+        }
+        catch (Config::NoSuchProp& e) {}
+    }
+
+    try {
+        const double max = dec2<double>( p["max"]);
+        const double min = dec2<double>( p["min"]);
+        const double e = (max - min)/1000; //TODO: parameter need
+        unsigned ca = MAXALARM;
+        stringstream buf;
+        buf << scientific;
+
+        for ( x = min; x < max; x += e) {
+            unsigned na = ta.examine();
+            na = ( na == MAXALARM) ? NOALARM:na;
+            if ( ca == na) continue;
+            buf << x << ' ' << na << ' ';
+            ca = na;
+        }
+        buf << max;
+        prop->colors = buf.str();
+    }
+    catch (Config::NoSuchProp& e) { }
+
+
+
+
+
+
+
+
+
+
+
 #endif //EXPRESSIONS
 
 }
@@ -236,6 +289,13 @@ string addr= "";
         throw "no network: " + c[name][NET];
 
     Network& net = *networks[ c[name][NET]];
+
+if ( NULL == s && type == "ModbusTCPIntSocketSensor") {
+        s = new ModbusTCPIntSocketSensor( name, addr,
+                               &dynamic_cast<SocketOpenNetwork&>( net),
+                               SModEntry( c[name]));
+}    
+
 
 #ifdef NETSNMP
 
@@ -428,6 +488,34 @@ Runable* Dispatcher::makeBackend( const string& name)
                  static_cast<LogBackend*>(b)->addFilter(f);
         }
     }
+
+        if ( type == "JsonBackend") {
+        b = new JsonBackend( c[name]["file"], c[name]["parameters"] );
+//        b = new JsonBackend( c[name]["file"] );        
+        stringstream strf( config[name]["filters"]);
+        string fn;
+        while ( strf >> ws >> fn, strf) {
+            Filter* f = NULL;
+            if ( fn == "TransparentFilter") f = new TransparentFilter();
+
+            if ( fn == "TimeThresholdFilter") f =
+                        new TimeThresholdFilter( static_cast<JsonBackend*>(b), read_timespec(config[name]["period"])  );
+
+            if ( fn == "ThresholdFilter") f =
+                        new ThresholdFilter( static_cast<JsonBackend*>(b)  );
+
+            if ( fn == "TimeFilter")
+                f = new TimeFilter( read_timespec(config[name]["period"]));
+                
+            if ( NULL != f)
+                 static_cast<JsonBackend*>(b)->addFilter(f);
+        }
+    }
+
+    if ( NULL == b && type == "MSGBackend")
+{
+        b = new MSGBackend();
+}
 
 
     if ( NULL == b)

@@ -22,6 +22,7 @@ add_library ( lib-mon STATIC
     Config.cc
     Expression.cc
     Filtered.cc
+    MSGBackend.cc
     MTSync.cc
     Network.cc
     Message.cc
@@ -29,6 +30,7 @@ add_library ( lib-mon STATIC
     MessageQueue.cc
     MessagePool.cc
     MessageBuffer.cc
+    ModbusIntSocketSensor.cc
     Parser.cc
     Parser.tab.cc
     PGBackend.cc
@@ -40,6 +42,7 @@ add_library ( lib-mon STATIC
     SNMPSensor.cc
     SNMPNetwork.cc
     SocketNetwork.cc
+    SocketSensorModbus.cc
     Sensor.cc
     S2SMapRobot.cc
     Parameter.cc
@@ -58,11 +61,11 @@ set_property(TARGET lib_snmp PROPERTY
 #target_compile_definitions(lib-mon PUBLIC EXPRESSIONS )
 #target_compile_definitions(monsys  PUBLIC EXPRESSIONS )
 
-#target_compile_definitions(lib-mon PUBLIC EXPRESSIONS NETSNMP)
-#target_compile_definitions(monsys  PUBLIC EXPRESSIONS NETSNMP)
+target_compile_definitions(lib-mon PUBLIC EXPRESSIONS NETSNMP)
+target_compile_definitions(monsys  PUBLIC EXPRESSIONS NETSNMP)
 
-target_compile_definitions(lib-mon PUBLIC EXPRESSIONS PSQL NETSNMP)
-target_compile_definitions(monsys  PUBLIC EXPRESSIONS PSQL NETSNMP)
+#target_compile_definitions(lib-mon PUBLIC EXPRESSIONS PSQL NETSNMP)
+#target_compile_definitions(monsys  PUBLIC EXPRESSIONS PSQL NETSNMP)
 
 
 target_compile_options(lib-mon PUBLIC -pthread -fPIC -Wno-deprecated)
@@ -77,7 +80,7 @@ lib-mon
 lib_snmp
 #lib_psql
 -lpthread
-/usr/lib/x86_64-linux-gnu/libpq.so
+#/usr/lib/x86_64-linux-gnu/libpq.so
 #/usr/local/lib/libnetsnmp.so
 )
 

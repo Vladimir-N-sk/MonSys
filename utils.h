@@ -54,6 +54,9 @@ T hex2( const std::string& s)
 
 void nanosleep( const timespec& );
 
+int count2str(const string&, const string&);
+std::string modbus_rtu_crc(const string&) throw (exception);
+bool checkCRC( const string&) throw (exception);
 bool BEcheckCRC( const std::string&);
 std::string BEcrc( const int&);
 unsigned short word2short( const unsigned char&, const unsigned char& );

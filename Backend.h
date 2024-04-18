@@ -10,7 +10,7 @@ class Backend
  : virtual public Runable, virtual public Transport<Message*> {
 
 public:
-    Backend() {};
+    Backend(){};
     virtual ~Backend(){};
 };
 #endif
