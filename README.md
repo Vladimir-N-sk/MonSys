@@ -16,11 +16,11 @@ Monitoring System (сокращенно MonSys).
 *-ModBus RTU, ModBus-TCP;
 
 Корпоративные
-*-ICP DAS;
-*-Счетчики электроэнергии СЕ301-303, СЕ102;
-*-Контроллеры ДГУ BE2000 Bernini
-*-ИБП Эко-Мастер
-*-ЭПУ Eltek MiniFlex, AEON, Flatpack
+*ICP DAS;
+*Счетчики электроэнергии СЕ301-303, СЕ102;
+*Контроллеры ДГУ BE2000 Bernini
+*ИБП Эко-Мастер
+*ЭПУ Eltek MiniFlex, AEON, Flatpack
 
 
 Вся настройка работы ведется через файл monsys.cfg
